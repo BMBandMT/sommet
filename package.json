@@ -16,6 +16,7 @@
     "@slixites/gatsby-plugin-google-fonts": "^1.1.1",
     "@wardpeet/gatsby-image-nextgen": "0.0.2",
     "animate.css": "^4.1.1",
+    "babel-plugin-styled-components": "^2.0.2",
     "babel-preset-gatsby": "^0.5.14",
     "framer-motion": "^3.10.5",
     "gatsby": "^2.19.12",
@@ -43,7 +44,7 @@
     "gatsby-plugin-sass": "^2.1.28",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-sitemap": "^2.3.5",
-    "gatsby-plugin-styled-components": "^3.2.1",
+    "gatsby-plugin-styled-components": "^3.10.0",
     "gatsby-plugin-translate": "^1.1.5",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.13",
@@ -81,7 +82,7 @@
     "react-youtube": "^7.9.0",
     "sass": "^1.42.1",
     "string-strip-html": "^5.0.2",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
