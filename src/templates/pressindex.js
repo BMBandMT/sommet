@@ -318,7 +318,7 @@ export const postQuery = graphql`
         }
       }
     }
-    defaultBlock: prismicBlocks(uid: { eq: "global-contact" }) {
+    defaultBlock: prismicBlocks(uid: { eq: "global-footer" }) {
       data {
         body {
           ... on PrismicBlocksBodyColumnsSection {

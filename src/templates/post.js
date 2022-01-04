@@ -296,7 +296,7 @@ export default Post
 
 export const postQuery = graphql`
   query PostBySlug($uid: String!) {
-    defaultBlock: prismicBlocks(uid: { eq: "global-contact" }) {
+    defaultBlock: prismicBlocks(uid: { eq: "global-footer" }) {
       data {
         body {
           ... on PrismicBlocksBodyColumnsSection {
