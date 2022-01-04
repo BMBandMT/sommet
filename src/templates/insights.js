@@ -368,7 +368,7 @@ export const postQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
     blogpinned: allPrismicBlogPost(
       sort: { order: DESC, fields: data___release_date }
-      filter: { data: { pinned: { eq: true } } }
+      filter: { data: { blogpinned: { eq: true } } }
     ) {
       nodes {
         uid
@@ -377,7 +377,7 @@ export const postQuery = graphql`
           teaser {
             html
           }
-          pinned
+          blogpinned
           author {
             text
           }
@@ -409,7 +409,7 @@ export const postQuery = graphql`
           teaser {
             html
           }
-          pinned
+          blogpinned
           author {
             text
           }

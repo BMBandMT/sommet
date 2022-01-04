@@ -27,18 +27,18 @@
         "label": "Release Date"
       }
     },
-    "pinned": {
-      "type": "Boolean",
-      "config": {
-        "default_value": false,
-        "label": "Pinned"
-      }
-    },
     "teaser": {
       "type": "StructuredText",
       "config": {
         "multi": "paragraph",
         "label": "Teaser"
+      }
+    },
+    "blogpinned": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "blogpinned"
       }
     },
     "main_image": {
