@@ -119,14 +119,14 @@ const InsightsStyle = styled.div`
 
 const InsightsHeader = styled.div`
   position: relative;
-  &:after{
-    content: '';
-    height:40px;
-    width:40px;
-    border-radius:50%;
-    background-color:white;
-    position:absolute;
-    bottom:-20px;
+  &:after {
+    content: "";
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    bottom: -20px;
     right: calc(50% - 20px);
   }
   section {
@@ -162,14 +162,13 @@ const InsightsHeader = styled.div`
   }
 `
 const BlogPinned = styled.div`
-
-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
   .pinned-inner {
     display: flex;
     justify-content: space-between;
     padding: 90px 0px;
     @media (max-width: ${variable.mobileWidth}) {
-      flex-direction:column;
+      flex-direction: column;
     }
     .pinned-left {
       width: calc(50% - 17px);
@@ -181,36 +180,36 @@ box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
           height: 100%;
           width: 100%;
           @media (max-width: ${variable.mobileWidth}) {
-      min-height:200px;
-    }
+            min-height: 200px;
+          }
         }
       }
       @media (max-width: ${variable.mobileWidth}) {
-      width:100%;
-    }
+        width: 100%;
+      }
     }
     .pinned-right {
       width: calc(50% - 17px);
-      background-image:url("../../images/LineGraphic.png");
-      background-size:300px;
-      background-repeat:no-repeat;
-      background-position:bottom right;
-      h2{
-        font-size:25px;
-        line-height:27px;
+      background-image: url("../../images/LineGraphic.png");
+      background-size: 300px;
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      h2 {
+        font-size: 25px;
+        line-height: 27px;
       }
-      .blog-teaser{
-        p{
-          font-size:17px;
+      .blog-teaser {
+        p {
+          font-size: 17px;
         }
       }
-      a{
-        font-size:17px;
-        color:#236382;
+      a {
+        font-size: 17px;
+        color: #236382;
       }
       @media (max-width: ${variable.mobileWidth}) {
-      width:100%;
-    }
+        width: 100%;
+      }
     }
   }
 `
@@ -293,36 +292,36 @@ const Post = props => {
         </BackgroundImage>
       </InsightsHeader>
       <BlogPinned>
-          <Container className="blog-pinned">
-            {props.data.blogpinned && (
-              <div className="pinned-inner">
-                <div className="pinned-left">
-                  <div className="blog-pinned-image-container">
-                    {returnImage(props.data.blogpinned.nodes[0])}
-                  </div>
+        <Container className="blog-pinned">
+          {props.data.blogpinned && (
+            <div className="pinned-inner">
+              <div className="pinned-left">
+                <div className="blog-pinned-image-container">
+                  {returnImage(props.data.blogpinned.nodes[0])}
                 </div>
-                <div className="pinned-right">
-                  <h2>{props.data.blogpinned.nodes[0].data.title.text}</h2>
-                  {props.data.blogpinned.nodes[0].data.teaser && (
-                    <div
-                      className="blog-teaser"
-                      dangerouslySetInnerHTML={{
-                        __html: props.data.blogpinned.nodes[0].data.teaser.html,
-                      }}
-                    />
-                  )}
-                  <Link
-                    className="cta-button"
-                    to={"/blog/" + props.data.blogpinned.nodes[0].uid}
-                  >
-                    Read the article
-                  </Link>
-                </div>
-                {console.log(props.data.blogpinned.nodes[0])}
               </div>
-            )}
-          </Container>
-        </BlogPinned>
+              <div className="pinned-right">
+                <h2>{props.data.blogpinned.nodes[0].data.title.text}</h2>
+                {props.data.blogpinned.nodes[0].data.teaser && (
+                  <div
+                    className="blog-teaser"
+                    dangerouslySetInnerHTML={{
+                      __html: props.data.blogpinned.nodes[0].data.teaser.html,
+                    }}
+                  />
+                )}
+                <Link
+                  className="cta-button"
+                  to={"/blog/" + props.data.blogpinned.nodes[0].uid}
+                >
+                  Read the article
+                </Link>
+              </div>
+              {console.log(props.data.blogpinned.nodes[0])}
+            </div>
+          )}
+        </Container>
+      </BlogPinned>
       <InsightsStyle>
         <Container className="blog-index-container">
           <EntityResult blog={props.data.blog} />
@@ -430,7 +429,7 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "Pageheader.png" }) {
+    blogbg: file(relativePath: { eq: "Pageheader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG

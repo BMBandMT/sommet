@@ -105,14 +105,14 @@ const InsightsStyle = styled.div`
 
 const InsightsHeader = styled.div`
   position: relative;
-  &:after{
-    content: '';
-    height:40px;
-    width:40px;
-    border-radius:50%;
-    background-color:white;
-    position:absolute;
-    bottom:-20px;
+  &:after {
+    content: "";
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    bottom: -20px;
     right: calc(50% - 20px);
   }
   section {
@@ -122,14 +122,14 @@ const InsightsHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:column;
-    color:white;
-    max-width:555px;
-    margin:0 auto;
-    text-align:center;
-    p{
-      font-size:18px;
-      line-height:22px;
+    flex-direction: column;
+    color: white;
+    max-width: 555px;
+    margin: 0 auto;
+    text-align: center;
+    p {
+      font-size: 18px;
+      line-height: 22px;
     }
   }
   h1 {
@@ -137,7 +137,7 @@ const InsightsHeader = styled.div`
     font-size: 60px;
     line-height: 57px;
     color: #ffffff !important;
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
   .hero-flex {
     min-height: 350px;
@@ -215,7 +215,10 @@ const Post = props => {
           <Container className="hero-slice-container">
             <div className="hero-flex" style={{ minHeight: min_height }}>
               <h1>Press Features & Releases</h1>
-              <p>Features in news and business publications, as well as the latest press releases for Alternative Wealth Partners.</p>
+              <p>
+                Features in news and business publications, as well as the
+                latest press releases for Alternative Wealth Partners.
+              </p>
             </div>
           </Container>
         </BackgroundImage>
@@ -290,7 +293,7 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "Pageheader.png" }) {
+    blogbg: file(relativePath: { eq: "Pageheader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG

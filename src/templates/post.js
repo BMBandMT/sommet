@@ -376,7 +376,7 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "BlogHeader.png" }) {
+    blogbg: file(relativePath: { eq: "BlogHeader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG

@@ -102,8 +102,8 @@ const PageStyle = styled.div`
   margin: 0 auto;
   position: relative;
   padding-bottom: 0px;
-    top: 200px;
-    margin-bottom: 260px;
+  top: 200px;
+  margin-bottom: 260px;
   .blog-post-container {
     @media (max-width: ${variable.mobileWidth}) {
       flex-direction: column;
@@ -217,7 +217,7 @@ const PageStyle = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    margin-top:20px;
+    margin-top: 20px;
 
     a {
       border: 2px solid ${variable.blue};
@@ -226,16 +226,16 @@ const PageStyle = styled.div`
       font-size: 17px;
       line-height: 27px;
       font-weight: 500;
-      color:${variable.blue};
-      position:relative;
-      &:after{
-      content:'';
-      width:100%;
-      border-bottom:3px solid ${variable.blue};
-      position:absolute;
-      bottom:-20px;
-      left:0px;
-    }
+      color: ${variable.blue};
+      position: relative;
+      &:after {
+        content: "";
+        width: 100%;
+        border-bottom: 3px solid ${variable.blue};
+        position: absolute;
+        bottom: -20px;
+        left: 0px;
+      }
       &:hover {
         color: white;
         background-color: ${variable.blue};
@@ -245,8 +245,8 @@ const PageStyle = styled.div`
 `
 
 const BlogHeader = styled.div`
-position:absolute;
-width:100%;
+  position: absolute;
+  width: 100%;
   .blog-header-container {
     min-height: 350px;
     display: flex;
@@ -415,7 +415,7 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "Pageheader.png" }) {
+    blogbg: file(relativePath: { eq: "Pageheader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
