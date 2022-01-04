@@ -1,0 +1,76 @@
+@mixin cta-button() {
+  background-color: transparent;
+  color: $bluegreen;
+  padding: 9px 20px;
+  border-radius: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  border: 1px solid $bluegreen;
+  font-family: trajan-pro-3, serif;
+  &:hover {
+    background: darken($bluegreen, 10%);
+  }
+}
+@mixin cta-button-dark() {
+  color: #000000;
+  padding: 9px 20px;
+  border-radius: 0px;
+  border: 2px solid $blue;
+  font-size: 18px;
+  font-weight: 400;
+  display: inline-block;
+  border: 1px solid black;
+  font-family: trajan-pro-3, serif;
+
+  &:hover {
+    color: white;
+    background-color: #000000;
+  }
+}
+@mixin cta-button-white-bg() {
+  color: $blue;
+  padding: 9px 30px;
+  border-radius: 5px;
+  border: 2px solid $blue;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: white;
+  &:hover {
+    background: darken($blue, 10%);
+    color: white;
+  }
+}
+@mixin cta-button-white() {
+  color: white;
+  padding: 9px 30px;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+  display: inline-block;
+  &:hover {
+    background: white;
+    color: $blue;
+  }
+}
+@mixin tablet {
+  @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin mobilesmall {
+  @media only screen and (max-width: $mobile-width-small) {
+    @content;
+  }
+}

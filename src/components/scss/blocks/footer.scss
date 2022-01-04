@@ -1,0 +1,19 @@
+#slice-id-global-footer-1 {
+  .section-content {
+    padding: 90px 0px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 30px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  p {
+    max-width: 580px;
+    margin: 20px auto;
+  }
+  a {
+    @include cta-button-white();
+  }
+}

@@ -1,0 +1,167 @@
+#home {
+  .header {
+    position: absolute;
+  }
+}
+#slice-id-home-hero {
+  .section-content {
+    padding-top: 220px;
+    padding-bottom: 220px;
+    max-width: 740px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include mobile() {
+      padding-top: 60px;
+    }
+  }
+  h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 38px;
+  }
+  p {
+    font-size: 20px;
+    max-width: 600px;
+  }
+  a {
+    @include cta-button();
+  }
+}
+
+#slice-id-home-models {
+  margin-top: 30px;
+  h2 {
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+  }
+  img {
+    height: auto;
+  }
+  section {
+    padding-bottom: 0px;
+    padding-top: 65px;
+  }
+  .column-item {
+    width: calc(100% / 2 - 20px);
+    p {
+      text-align: center;
+      color: #000000;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+}
+
+#slice-id-home-models-2 {
+  section {
+    padding-bottom: 60px;
+  }
+  p {
+    padding: 20px;
+    margin: 0px;
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+    max-width: 770px;
+    margin: 0 auto;
+  }
+  a {
+    @include cta-button-dark();
+    margin-top: 0px;
+  }
+}
+
+#slice-id-home-brochures {
+  margin-top: 30px;
+  .gatsby-image-wrapper {
+    padding: 80px 0px;
+  }
+  h2 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  p {
+    font-size: 20px;
+  }
+  a {
+    @include cta-button();
+  }
+  .section-content {
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .video-container {
+    margin-top: 60px;
+  }
+}
+
+#slice-id-home-built {
+  margin-top: 30px;
+  .section-content {
+    padding: 140px 0px;
+    text-align: left;
+    p {
+      max-width: 580px;
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 35px;
+      max-width: 300px;
+      margin-bottom: 0px;
+      font-weight: 400;
+    }
+    a {
+      @include cta-button();
+    }
+  }
+}
+
+#slice-id-home-community {
+  margin-top: 30px;
+  text-align: center;
+  color: #000000;
+  .section-content {
+    max-width: 730px;
+    margin: 0 auto;
+    padding-top: 65px;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 35px;
+    margin-bottom: 0px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  a {
+    @include cta-button-dark();
+  }
+}
+
+#slice-id-home-community-2 {
+  section {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    img {
+      height: auto;
+    }
+    .column-item {
+      width: calc(100% / 2 - 15px);
+      margin-bottom: 20px;
+      .block-img {
+        margin: 0px;
+      }
+    }
+  }
+}
+
+#slice-id-home-blog-2 {
+  section {
+    padding: 65px 0px;
+  }
+}
