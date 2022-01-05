@@ -218,10 +218,7 @@ export const Header = props => {
   return (
     <HeaderStyle className="header">
       <Container className="header-container">
-        <a
-          className="logo"
-          href={"https://sommetproperties.netlify.app" + props.lang}
-        >
+        <a className="logo" href={window.location.origin + props.lang}>
           <Img fluid={logo} alt="logo" />
         </a>
         <div className="mobile-menu-container">{<MobileMenu />}</div>

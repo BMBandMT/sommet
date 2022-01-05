@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  transition: 0.3s;
+  // transition: 0.3s;
 }
 body {
   margin: 0px;
@@ -8,9 +8,6 @@ body {
   line-height: 28px;
   letter-spacing: 1.5px;
   color: $bluegreen;
-  zoom: 0.9;
-  -moz-transform: scale(0.9);
-  -moz-transform-origin: 0 0;
   font-family: bookmania, serif;
   font-weight: 400;
   font-style: normal;

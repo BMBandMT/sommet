@@ -16,6 +16,9 @@ const LangStyle = styled.header`
   div {
     margin-bottom: 10px;
   }
+  .change-lang {
+    cursor: pointer;
+  }
 `
 class Layout extends React.Component {
   constructor(props) {
@@ -36,6 +39,11 @@ class Layout extends React.Component {
         this.setState({ langLabel: langLabel }, () => {
           // console.log(this.state.langLabel)
         })
+        console.log(lang)
+        console.log(window.location.pathname)
+        if (lang == "/fr-fr" && window.location.pathname != "/fr-fr") {
+          window.location = window.location.origin + lang
+        }
       }
     }
   }
@@ -46,7 +54,7 @@ class Layout extends React.Component {
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "")
         localStorage.setItem("langLabel", "Français")
-        window.location = "https://sommetproperties.netlify.app"
+        window.location = window.location.origin
       }
     } else {
       this.setState(state => ({ lang: "/fr-fr" }))
@@ -54,7 +62,7 @@ class Layout extends React.Component {
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "/fr-fr")
         localStorage.setItem("langLabel", "English")
-        window.location = "https://sommetproperties.netlify.app/fr-fr"
+        window.location = window.location.origin + "/fr-fr"
       }
     }
   }
@@ -73,7 +81,9 @@ class Layout extends React.Component {
         <LangStyle>
           <Container>
             <div>Confidentiality Agreement</div>
-            <div onClick={() => this.toggleLang()}>{this.state.langLabel}</div>
+            <div className="change-lang" onClick={() => this.toggleLang()}>
+              {this.state.langLabel}
+            </div>
           </Container>
         </LangStyle>
       </div>
