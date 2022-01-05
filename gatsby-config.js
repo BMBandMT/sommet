@@ -106,9 +106,6 @@ module.exports = {
         domains: ["https://images.prismic.io"],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: "gatsby-plugin-sass",
       options: {
@@ -117,6 +114,9 @@ module.exports = {
         includePaths: ["src/components/scss"],
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     // `gatsby-plugin-netlify-headers`,
     {
       resolve: `gatsby-plugin-manifest`,

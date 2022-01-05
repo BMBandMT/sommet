@@ -284,9 +284,6 @@ const Post = props => {
           <Container className="hero-slice-container">
             <div className="hero-flex" style={{ minHeight: min_height }}>
               <h1>Latest news & updates</h1>
-              <p>
-                News and expertise about alternative investing and our fund.
-              </p>
             </div>
           </Container>
         </BackgroundImage>

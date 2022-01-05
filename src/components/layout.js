@@ -46,7 +46,7 @@ class Layout extends React.Component {
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "")
         localStorage.setItem("langLabel", "Français")
-        window.location = "http://localhost:8000"
+        window.location = "https://sommetproperties.netlify.app"
       }
     } else {
       this.setState(state => ({ lang: "/fr-fr" }))
@@ -54,7 +54,7 @@ class Layout extends React.Component {
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "/fr-fr")
         localStorage.setItem("langLabel", "English")
-        window.location = "http://localhost:8000/fr-fr"
+        window.location = "https://sommetproperties.netlify.app/fr-fr"
       }
     }
   }
