@@ -38,7 +38,7 @@ module.exports = {
       options: {
         shouldDownloadImage: ({ node, key, value }) => {
           // Return true to download the image or false to skip.
-          return true
+          return false
         },
         linkResolver: ({ node, key, value }) => doc => {
           // Your link resolver

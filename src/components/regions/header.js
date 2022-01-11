@@ -121,14 +121,14 @@ function menuRender(menuitem, lang) {
   ) {
     return (
       <div>
-        <Link to={lang + menuitem.primary.link.url}>
+        <Link to={lang + menuitem.primary.link.uid}>
           {menuitem.primary.label.text}
         </Link>
         <div className="sub-menu">
           {menuitem.items.map((submenuitem, index) => (
             <div key={index}>
               {submenuitem.sub_nav_link.url && (
-                <Link to={lang + submenuitem.sub_nav_link.url}>
+                <Link to={lang + "/" + submenuitem.sub_nav_link.uid}>
                   {submenuitem.sub_nav_link_label.text}
                 </Link>
               )}
@@ -145,7 +145,7 @@ function menuRender(menuitem, lang) {
   } else {
     if (menuitem.primary.link.url != "") {
       return (
-        <Link to={lang + menuitem.primary.link.url}>
+        <Link to={lang + "/" + menuitem.primary.link.uid}>
           {menuitem.primary.label.text}
         </Link>
       )
@@ -173,6 +173,7 @@ export const Header = props => {
                   sub_nav_link {
                     url
                     link_type
+                    uid
                   }
                   sub_nav_link_label {
                     text
@@ -188,6 +189,7 @@ export const Header = props => {
                   link {
                     url
                     link_type
+                    uid
                   }
                   relative_link {
                     text
@@ -196,6 +198,9 @@ export const Header = props => {
               }
             }
             logo {
+              fluid(maxWidth: 400) {
+                ...GatsbyPrismicImageFluid_withWebp_noBase64
+              }
               localFile {
                 childImageSharp {
                   fluid(maxWidth: 400) {
@@ -213,7 +218,7 @@ export const Header = props => {
     }
   `)
   const nav = data.site.nodes[0].data.nav
-  const logo = data.site.nodes[0].data.logo.localFile.childImageSharp.fluid
+  const logo = data.site.nodes[0].data.logo.fluid
   console.log(props.lang)
   return (
     <HeaderStyle className="header">

@@ -5,19 +5,6 @@ import Container from "../container"
 
 const HeroStyle = styled.div`
   position: relative;
-  &:after {
-    width: 100%;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    height: 100px;
-    position: absolute;
-    bottom: 0px;
-    content: "";
-  }
   section {
     padding: 0px !important;
   }
@@ -41,9 +28,9 @@ export const HeroSlice = ({ slice }) => {
   var font_color = "white"
   var fluid = null
   var hero_title = null
-  var min_height = 350
+  var min_height = 455
   if (slice.primary.background_image != null) {
-    fluid = slice.primary.background_image.localFile.childImageSharp.fluid
+    fluid = slice.primary.background_image.fluid
   }
 
   if (slice.primary.font_color != null) {

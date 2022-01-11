@@ -3,7 +3,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const pages = await graphql(`
     {
-      blog: allPrismicBlogPost {
+      blog: allPrismicBlogPost(filter: { lang: { eq: "en-us" } }) {
+        nodes {
+          uid
+          lang
+        }
+      }
+      blogfr: allPrismicBlogPost(filter: { lang: { eq: "fr-fr" } }) {
         nodes {
           uid
           lang
@@ -25,10 +31,12 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   const postsPerPage = 3
   const numPages = Math.ceil(pages.data.blog.nodes.length / postsPerPage)
+  console.log("TEST")
+  console.log(pages.data.blog.nodes.length)
   const insightsTemplate = path.resolve("src/templates/insights.js")
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/insights` : `/insights/${i + 1}`,
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: insightsTemplate,
       context: {
         limit: postsPerPage,
@@ -38,9 +46,25 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  const numPagesFr = Math.ceil(pages.data.blogfr.nodes.length / postsPerPage)
+  const insightsTemplateFr = path.resolve("src/templates/insightsfr.js")
+  console.log("TEST")
+  console.log(pages.data.blogfr.nodes.length)
+  Array.from({ length: numPagesFr }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/fr-fr/blog` : `/fr-fr/blog/${i + 1}`,
+      component: insightsTemplateFr,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPagesFr,
+        currentPage: i + 1,
+      },
+    })
+  })
   const postTemplate = path.resolve("src/templates/post.js")
   pages.data.blog.nodes.forEach(node => {
-    if (node.lang == "ene-us") {
+    if (node.lang == "en-us") {
       createPage({
         path: `/blog/${node.uid}`,
         component: postTemplate,

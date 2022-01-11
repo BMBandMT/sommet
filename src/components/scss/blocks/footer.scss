@@ -6,14 +6,17 @@
 
   h2 {
     font-size: 30px;
-    max-width: 300px;
+    max-width: 400px;
     margin: 0 auto;
+    font-weight: bold;
   }
   p {
-    max-width: 580px;
+    max-width: 620px;
     margin: 20px auto;
+    font-size: 20px;
+    font-weight: 400;
   }
   a {
-    @include cta-button-white();
+    @include cta-button();
   }
 }

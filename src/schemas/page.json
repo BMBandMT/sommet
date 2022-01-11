@@ -17,17 +17,7 @@
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": {
-          "basic_section": [],
-          "columns_section": [],
-          "left_right_section": [],
-          "entity_query": [],
-          "slideshow": [],
-          "block_reference": [],
-          "contact": [],
-          "hero": [],
-          "animate_left_right": []
-        },
+        "labels": null,
         "choices": {
           "basic_section": {
             "type": "Slice",
@@ -93,7 +83,7 @@
               "content": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Content",
                   "labels": [
@@ -179,7 +169,7 @@
               "content": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Content"
                 }
@@ -243,7 +233,7 @@
               "left_content": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Left Content",
                   "labels": [
@@ -272,7 +262,7 @@
               "right_content": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Right Content",
                   "labels": [
@@ -288,7 +278,7 @@
               "right_content_above_form": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "Right Content Above Form"
                 }
               },
@@ -397,7 +387,7 @@
               "image_copy": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Image Copy"
                 }
@@ -509,7 +499,7 @@
               "left_copy": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "Left Copy"
                 }
               },
@@ -539,7 +529,7 @@
               "right_copy": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "Right Copy"
                 }
               },
@@ -552,6 +542,15 @@
                 }
               }
             },
+            "repeat": {}
+          },
+          "download": {
+            "type": "Slice",
+            "fieldset": "Download",
+            "description": "download",
+            "icon": "cloud_download",
+            "display": "list",
+            "non-repeat": {},
             "repeat": {}
           }
         }

@@ -70,12 +70,12 @@ const BlogPostTeaserStyle = styled.article`
 `
 
 function returnImage(post) {
-  if (post.data.main_image.localFile != null) {
-    if (post.data.main_image.localFile.childImageSharp) {
+  if (post.data.main_image != null) {
+    if (post.data.main_image.fluid) {
       return (
         <BackgroundImage
           Tag="section"
-          fluid={post.data.main_image.localFile.childImageSharp.fluid}
+          fluid={post.data.main_image.fluid}
         ></BackgroundImage>
       )
     }

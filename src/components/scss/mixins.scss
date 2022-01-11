@@ -44,17 +44,19 @@
   }
 }
 @mixin cta-button-white() {
-  color: white;
-  padding: 9px 30px;
-  border-radius: 5px;
-  border: 2px solid white;
+  color: #000000;
+  padding: 9px 20px;
+  border-radius: 0px;
+  border: 2px solid $blue;
   font-size: 18px;
-  margin-top: 20px;
-  font-weight: bold;
+  font-weight: 400;
   display: inline-block;
+  border: 1px solid black;
+  font-family: trajan-pro-3, serif;
+
   &:hover {
-    background: white;
-    color: $blue;
+    color: white;
+    background-color: #000000;
   }
 }
 @mixin tablet {

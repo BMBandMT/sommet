@@ -279,15 +279,17 @@ class Post extends React.Component {
     // const node = props.data.page.data
     // const site = props.data.site
     var min_height = 350
-    const defaultBlock = this.props.data.defaultBlock.data
+    const defaultBlock = this.props.data.defaultBlockFr.data
+    console.log(defaultBlock)
 
     // const defaultBlock = props.data.prismic.allBlocks.edges[0].node
     // const site = props.data.prismic.allSite_informations.edges[0].node
-    const { currentPage, numPages } = this.props.pageContext
+    const { currentPage, numPagesFr } = this.props.pageContext
     const isFirst = currentPage === 1
-    const isLast = currentPage === numPages
+    const isLast = currentPage === numPagesFr
     const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
     const nextPage = (currentPage + 1).toString()
+    console.log(this.props.pageContext)
     console.log(this)
     return (
       <Layout>
@@ -295,7 +297,7 @@ class Post extends React.Component {
           <BackgroundImage fluid={this.props.data.blogbg.childImageSharp.fluid}>
             <Container className="hero-slice-container">
               <div className="hero-flex" style={{ minHeight: min_height }}>
-                <h1>Read About Sommet Properties</h1>
+                <h1>Latest news & updates FR</h1>
               </div>
             </Container>
           </BackgroundImage>
@@ -322,7 +324,9 @@ class Post extends React.Component {
                   )}
                   <Link
                     className="cta-button"
-                    to={"/blog/" + this.props.data.blogpinned.nodes[0].uid}
+                    to={
+                      "/fr-fr/blog/" + this.props.data.blogpinned.nodes[0].uid
+                    }
                   >
                     Read the article
                   </Link>
@@ -338,18 +342,18 @@ class Post extends React.Component {
           <Container className="pager">
             <div className="pager-previous-container">
               {!isFirst && (
-                <Link to={"/blog" + prevPage} rel="prev">
+                <Link to={"/fr-fr/blog" + prevPage} rel="prev">
                   Prev
                 </Link>
               )}
             </div>
 
             <div className="pager-container">
-              {Array.from({ length: numPages }, (_, i) => (
+              {Array.from({ length: numPagesFr }, (_, i) => (
                 <Link
                   className="pager-link"
                   key={`pagination-number${i + 1}`}
-                  to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
+                  to={`/insights${i === 0 ? "" : "/" + (i + 1)}`}
                 >
                   {i + 1}
                 </Link>
@@ -357,7 +361,7 @@ class Post extends React.Component {
             </div>
             <div className="pager-next-container">
               {!isLast && (
-                <Link to={"/blog/" + nextPage} rel="next">
+                <Link to={"/fr-fr/blog/" + nextPage} rel="next">
                   Next
                 </Link>
               )}
@@ -365,7 +369,6 @@ class Post extends React.Component {
           </Container>
         </InsightsStyle>
         <div className="blog-post-right">
-          {console.log(defaultBlock)}
           <PostSlices slices={defaultBlock.body} id={defaultBlock.body[0].id} />
         </div>
       </Layout>
@@ -376,10 +379,10 @@ class Post extends React.Component {
 export default Post
 
 export const postQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+  query blogListQueryFr($skip: Int!, $limit: Int!) {
     blogpinned: allPrismicBlogPost(
       sort: { order: DESC, fields: data___release_date }
-      filter: { data: { blogpinned: { eq: true } }, lang: { eq: "en-us" } }
+      filter: { data: { blogpinned: { eq: true } }, lang: { eq: "fr-fr" } }
     ) {
       nodes {
         uid
@@ -415,7 +418,7 @@ export const postQuery = graphql`
       sort: { order: DESC, fields: data___release_date }
       limit: $limit
       skip: $skip
-      filter: { lang: { eq: "en-us" } }
+      filter: { lang: { eq: "fr-fr" } }
     ) {
       nodes {
         uid

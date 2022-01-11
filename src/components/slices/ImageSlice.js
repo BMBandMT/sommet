@@ -10,7 +10,7 @@ const ImageStyle = styled.div`
 `
 
 export const ImageSlice = ({ slice }) => {
-  return <Img fluid={slice.primary.image.localFile.childImageSharp.fluid} />
+  return <Img fluid={slice.primary.image.fluid} />
 }
 
 export default ImageSlice

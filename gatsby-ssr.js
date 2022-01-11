@@ -1,6 +1,3 @@
-// import * as React from "react"
-// import { PreviewStoreProvider } from "gatsby-source-prismic"
+import Provider from "./src/components/provider"
 
-// export const wrapRootElement = ({ element }) => (
-//   <PreviewStoreProvider>{element}</PreviewStoreProvider>
-// )
+export const wrapRootElement = Provider

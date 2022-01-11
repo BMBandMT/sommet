@@ -6,43 +6,18 @@ import phoneIcon from "../../images/phoneicon.png"
 import emailIcon from "../../images/email.png"
 import locationIcon from "../../images/locationicon.png"
 const ContactStyle = styled.div`
-  padding: 60px 0px;
+  padding: 160px 0px 60px 0px;
   margin: 0 auto;
-  max-width: 900px;
-  color: white;
-  p {
-    color: white;
-  }
-  .contact-top-copy {
-    max-width: 520px;
+  max-width: 720px;
+  h2 {
+    font-size: 30px;
+    line-height: 0.5;
     text-align: center;
-    a {
-      color: white;
-      padding: 9px 30px;
-      border-radius: 5px;
-      border: 2px solid white;
-      font-size: 18px;
-      font-weight: bold;
-      display: inline-block;
-      &:hover {
-        background: white;
-        color: ${variable.blue};
-      }
-    }
-    h2 {
-      font-size: 40px;
-      margin: 0px;
-    }
-    h3 {
-      font-size: 40px;
-      margin: 0px;
-      font-weight: normal;
-    }
-    p {
-      font-size: 18px;
-      line-height: 22px;
-      margin: 30px 0px;
-    }
+  }
+  p {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   .contact-outer {
     display: flex;
@@ -56,16 +31,16 @@ const ContactStyle = styled.div`
     }
   }
   .contact-form-left {
-    max-width: 615px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     form {
-      background-image: url("../../../images/FormBackground.png");
+      /* background-image: url("../../../images/FormBackground.png"); */
       padding: 40px;
-      border-radius: 5px;
+      border-radius: 2px;
+      background-color: #ffffff;
     }
     p {
       &:first-child {
@@ -128,13 +103,13 @@ const ContactStyle = styled.div`
   input {
     width: 100%;
     -webkit-appearance: none;
-    border: 2px solid ${variable.blue};
+    border: 2px solid #000000;
     border-radius: 7px;
     padding: 15px 20px;
     font-size: 17px;
     font-weight: 300;
     &::placeholder {
-      color: ${variable.blue};
+      color: #000000;
       font-size: 17px;
       font-weight: 300;
     }
@@ -142,7 +117,7 @@ const ContactStyle = styled.div`
   textarea {
     width: 100%;
     -webkit-appearance: none;
-    border: 2px solid ${variable.blue};
+    border: 2px solid #000000;
     border-radius: 7px;
     padding: 15px 20px;
     height: 240px;
@@ -150,7 +125,7 @@ const ContactStyle = styled.div`
     font-weight: 300;
     line-height: 24px;
     &::placeholder {
-      color: ${variable.blue};
+      color: #000000;
       font-size: 17px;
       font-weight: 300;
     }
@@ -166,12 +141,14 @@ const ContactStyle = styled.div`
   }
   .contact-submit {
     color: white;
-    background-color: ${variable.blue};
+    background-color: #000000;
     padding: 12px 20px;
-    font-size: 21px;
+    font-size: 16px;
     margin-top: 25px;
     display: inline-block;
     width: auto;
+    text-transform: uppercase;
+    font-family: trajan-pro-3, serif;
   }
   .email-phone {
     display: flex;
@@ -214,19 +191,13 @@ export const ContactSlice = ({ slice }) => {
         <div className="contact-outer">
           <div className="contact-form-left">
             <div class="contact-top-copy">
-              <h2>Invest in more.</h2>
-              <h3>Join our fund.</h3>
+              <h2>Contact Us</h2>
+              <h2>& Join Our Community</h2>
               <p>
-                If you’re ready to get started, schedule an introductory meeting
-                with our team:
+                To learn more about purchasing a home in Teranga Estates, as
+                well as home pricing and model options, please reach out to our
+                team.
               </p>
-              <a
-                target="_blank"
-                href="https://app.squarespacescheduling.com/schedule.php?owner=24260179 "
-              >
-                Schedule a Meeting
-              </a>
-              <p>Or reach out to us by sending a message.</p>
             </div>
             <form
               name="contact"
@@ -241,7 +212,12 @@ export const ContactSlice = ({ slice }) => {
                   <input name="bot-field" />
                 </label>
               </p>
-              <input type="text" id="name" name="name" placeholder="Name" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Full Name"
+              />
               <div className="email-phone">
                 <input
                   type="email"

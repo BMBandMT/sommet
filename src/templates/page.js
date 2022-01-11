@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import * as variable from "../components/variables"
 import styled from "styled-components"
 import "../components/scss/page/home.scss"
-import "../components/scss/page/invest.scss"
-import "../components/scss/page/about.scss"
+import "../components/scss/page/models.scss"
+import "../components/scss/page/wall.scss"
 import "../components/scss/page/contact.scss"
 
 import SEO from "../components/seo"
@@ -210,6 +210,9 @@ export const postQuery = graphql`
             slice_type
             items {
               image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -252,6 +255,9 @@ export const postQuery = graphql`
                 }
               }
               left_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -267,6 +273,9 @@ export const postQuery = graphql`
                 raw
               }
               right_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -305,6 +314,9 @@ export const postQuery = graphql`
                               embed_url
                             }
                             background_image {
+                              fluid {
+                                ...GatsbyPrismicImageFluid_withWebp_noBase64
+                              }
                               localFile {
                                 childImageSharp {
                                   fluid(maxWidth: 3840) {
@@ -343,6 +355,9 @@ export const postQuery = graphql`
                 text
               }
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   mobilesmall: childImageSharp {
                     fluid(quality: 90, maxWidth: 360) {
@@ -387,6 +402,9 @@ export const postQuery = graphql`
               }
               background_color
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 3840) {
@@ -415,6 +433,9 @@ export const postQuery = graphql`
                               text
                             }
                             background_image {
+                              fluid {
+                                ...GatsbyPrismicImageFluid_withWebp_noBase64
+                              }
                               localFile {
                                 childImageSharp {
                                   fluid(maxWidth: 3840) {
@@ -442,6 +463,9 @@ export const postQuery = graphql`
                           primary {
                             background_color
                             background_image {
+                              fluid {
+                                ...GatsbyPrismicImageFluid_withWebp_noBase64
+                              }
                               localFile {
                                 mobilesmall: childImageSharp {
                                   fluid(quality: 90, maxWidth: 360) {
@@ -492,6 +516,9 @@ export const postQuery = graphql`
                                             embed_url
                                           }
                                           background_image {
+                                            fluid {
+                                              ...GatsbyPrismicImageFluid_withWebp_noBase64
+                                            }
                                             localFile {
                                               childImageSharp {
                                                 fluid(maxWidth: 3840) {
@@ -536,6 +563,9 @@ export const postQuery = graphql`
                               text
                             }
                             left_background_image {
+                              fluid {
+                                ...GatsbyPrismicImageFluid_withWebp_noBase64
+                              }
                               localFile {
                                 childImageSharp {
                                   fluid(maxWidth: 1920) {
@@ -549,6 +579,9 @@ export const postQuery = graphql`
                               raw
                             }
                             right_background_image {
+                              fluid {
+                                ...GatsbyPrismicImageFluid_withWebp_noBase64
+                              }
                               localFile {
                                 childImageSharp {
                                   fluid(maxWidth: 1920) {
@@ -588,6 +621,9 @@ export const postQuery = graphql`
             slice_type
             primary {
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 3840) {
@@ -617,6 +653,9 @@ export const postQuery = graphql`
                 text
               }
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 3840) {
@@ -663,6 +702,9 @@ export const postQuery = graphql`
                 raw
               }
               left_background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -672,6 +714,9 @@ export const postQuery = graphql`
                 }
               }
               right_background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -735,6 +780,9 @@ export const postQuery = graphql`
           }
           main_image {
             url
+            fluid {
+              ...GatsbyPrismicImageFluid_withWebp_noBase64
+            }
             localFile {
               childImageSharp {
                 fluid(maxWidth: 475) {

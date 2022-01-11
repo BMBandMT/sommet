@@ -193,7 +193,7 @@ export const Footer = () => {
     }
   `)
   const nav = data.site.nodes[0].data.nav
-  const logo = data.site.nodes[0].data.logo.localFile.childImageSharp.fluid
+  const logo = data.site.nodes[0].data.logo.fluid
   return (
     <FooterStyle>
       <Container className="footer-container">

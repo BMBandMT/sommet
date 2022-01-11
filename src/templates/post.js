@@ -255,11 +255,7 @@ const Post = props => {
           <div className="blog-post-container">
             <div className="blog-post-main">
               <div className="main-image">
-                {node.main_image.localFile && (
-                  <Img
-                    fluid={node.main_image.localFile.childImageSharp.fluid}
-                  />
-                )}
+                {node.main_image.fluid && <Img fluid={node.main_image.fluid} />}
               </div>
               <div className="date-share">
                 {node.release_date && (
@@ -308,6 +304,9 @@ export const postQuery = graphql`
                 text
               }
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1920) {
@@ -338,6 +337,9 @@ export const postQuery = graphql`
               }
               background_color
               background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   mobilesmall: childImageSharp {
                     fluid(quality: 90, maxWidth: 360) {
@@ -417,6 +419,9 @@ export const postQuery = graphql`
         release_date(formatString: "MMM D, Y")
         main_image {
           url
+          fluid {
+            ...GatsbyPrismicImageFluid_withWebp_noBase64
+          }
           localFile {
             childImageSharp {
               fluid(maxWidth: 1920) {
@@ -440,6 +445,9 @@ export const postQuery = graphql`
             id
             primary {
               image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1200) {

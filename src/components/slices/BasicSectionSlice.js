@@ -208,13 +208,12 @@ export const BasicSectionSlice = ({ slice }) => {
       sidebarClass = "sidebar-active"
     }
   }
-  if (slice.primary.background_image.localFile != null) {
-    console.log(slice.primary.background_image.localFile)
-    if (slice.primary.background_image.localFile.desktop != null) {
-      desktopFluid = slice.primary.background_image.localFile.desktop.fluid
-      mobileFluid = slice.primary.background_image.localFile.mobile.fluid
-      mobileSmallFluid =
-        slice.primary.background_image.localFile.mobilesmall.fluid
+  if (slice.primary.background_image != null) {
+    console.log(slice.primary.background_image)
+    if (slice.primary.background_image.fluid != null) {
+      desktopFluid = slice.primary.background_image.fluid
+      mobileFluid = slice.primary.background_image.fluid
+      mobileSmallFluid = slice.primary.background_image.fluid
       sources = [
         mobileSmallFluid,
         {
@@ -237,7 +236,7 @@ export const BasicSectionSlice = ({ slice }) => {
     }
   }
 
-  if (slice.primary.background_image.localFile == null) {
+  if (slice.primary.background_image.fluid == null) {
     bg_video_image = true
   }
 

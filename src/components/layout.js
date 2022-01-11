@@ -39,11 +39,9 @@ class Layout extends React.Component {
         this.setState({ langLabel: langLabel }, () => {
           // console.log(this.state.langLabel)
         })
-        console.log(lang)
-        console.log(window.location.pathname)
-        if (lang == "/fr-fr" && window.location.pathname != "/fr-fr") {
-          window.location = window.location.origin + lang
-        }
+        // if (lang == "/fr-fr" && window.location.pathname != "/fr-fr") {
+        //   window.location = window.location.origin + lang
+        // }
       }
     }
   }
@@ -68,6 +66,8 @@ class Layout extends React.Component {
   }
 
   render() {
+    console.log(this)
+
     if (this.props.slug) {
       var pageId = this.props.slug
     } else {
