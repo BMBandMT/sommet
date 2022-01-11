@@ -86,32 +86,26 @@ const FooterStyle = styled.footer`
 const activeStyle = {
   textDecoration: "underline",
 }
-function menuRender(menuitem) {
+function menuRender(menuitem, lang) {
   if (
     menuitem.items[0].sub_nav_link_label.text != "" &&
     menuitem.items[0].sub_nav_link_label.text != "Dummy"
   ) {
     return (
       <div>
-        <Link activeStyle={activeStyle} to={menuitem.primary.link.url}>
+        <Link to={lang + menuitem.primary.link.uid}>
           {menuitem.primary.label.text}
         </Link>
         <div className="sub-menu">
           {menuitem.items.map((submenuitem, index) => (
             <div key={index}>
               {submenuitem.sub_nav_link.url && (
-                <Link
-                  activeStyle={activeStyle}
-                  to={submenuitem.sub_nav_link.url}
-                >
+                <Link to={lang + "/" + submenuitem.sub_nav_link.uid}>
                   {submenuitem.sub_nav_link_label.text}
                 </Link>
               )}
               {submenuitem.relative_link.text && (
-                <Link
-                  activeStyle={activeStyle}
-                  to={submenuitem.relative_link.text}
-                >
+                <Link to={lang + submenuitem.relative_link.text}>
                   {submenuitem.sub_nav_link_label.text}
                 </Link>
               )}
@@ -123,28 +117,26 @@ function menuRender(menuitem) {
   } else {
     if (menuitem.primary.link.url != "") {
       return (
-        <Link activeStyle={activeStyle} to={menuitem.primary.link.url}>
+        <Link to={lang + "/" + menuitem.primary.link.uid}>
           {menuitem.primary.label.text}
         </Link>
       )
     }
     if (menuitem.primary.relative_link) {
       return (
-        <Link
-          activeStyle={activeStyle}
-          to={menuitem.primary.relative_link.text}
-        >
+        <Link to={lang + menuitem.primary.relative_link.text}>
           {menuitem.primary.label.text}
         </Link>
       )
     }
   }
 }
-export const Footer = () => {
+export const Footer = props => {
   const data = useStaticQuery(graphql`
     query footermenu {
-      site: allPrismicSiteInformation {
+      site: allPrismicSiteInformation(filter: { lang: { eq: "en-us" } }) {
         nodes {
+          lang
           data {
             nav {
               ... on PrismicSiteInformationNavNavItem {
@@ -168,6 +160,56 @@ export const Footer = () => {
                   link {
                     url
                     link_type
+                    uid
+                  }
+                  relative_link {
+                    text
+                  }
+                }
+              }
+            }
+            logo {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
+            twitter {
+              url
+            }
+          }
+        }
+      }
+      sitefr: allPrismicSiteInformation(filter: { lang: { eq: "fr-fr" } }) {
+        nodes {
+          lang
+          data {
+            nav {
+              ... on PrismicSiteInformationNavNavItem {
+                id
+                items {
+                  sub_nav_link {
+                    url
+                    link_type
+                  }
+                  sub_nav_link_label {
+                    text
+                  }
+                  relative_link {
+                    text
+                  }
+                }
+                primary {
+                  label {
+                    text
+                  }
+                  link {
+                    url
+                    link_type
+                    uid
                   }
                   relative_link {
                     text
@@ -192,18 +234,25 @@ export const Footer = () => {
       }
     }
   `)
-  const nav = data.site.nodes[0].data.nav
+
+  var nav = data.site.nodes[0].data.nav
+  console.log(props.lang)
+  if (props.lang === "/fr-fr") {
+    nav = data.sitefr.nodes[0].data.nav
+  }
   const logo = data.site.nodes[0].data.logo.fluid
+  // var rootPath = "https://sommetproperties.netlify.app" + props.lang
+  var rootPath = window.location.origin + props.lang
   return (
     <FooterStyle>
       <Container className="footer-container">
         <div className="footer-upper-container">
-          <Link className="logo" to="/">
+          <Link className="logo" to={rootPath}>
             <img src="../../images/logo.png" alt="logo" />
           </Link>
           <ul className="footer-main-menu">
             {nav.map((menuitem, index) => (
-              <li key={index}>{menuRender(menuitem)}</li>
+              <li key={index}>{menuRender(menuitem, props.lang)}</li>
             ))}
           </ul>
         </div>

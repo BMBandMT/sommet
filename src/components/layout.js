@@ -77,7 +77,7 @@ class Layout extends React.Component {
       <div id={pageId}>
         <Header lang={this.state.lang} />
         <main>{this.props.children}</main>
-        <Footer />
+        <Footer lang={this.state.lang} />
         <LangStyle>
           <Container>
             <div>Confidentiality Agreement</div>

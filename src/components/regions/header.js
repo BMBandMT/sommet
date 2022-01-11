@@ -163,8 +163,61 @@ function menuRender(menuitem, lang) {
 export const Header = props => {
   const data = useStaticQuery(graphql`
     query menu {
-      site: allPrismicSiteInformation {
+      site: allPrismicSiteInformation(filter: { lang: { eq: "en-us" } }) {
         nodes {
+          data {
+            nav {
+              ... on PrismicSiteInformationNavNavItem {
+                id
+                items {
+                  sub_nav_link {
+                    url
+                    link_type
+                    uid
+                  }
+                  sub_nav_link_label {
+                    text
+                  }
+                  relative_link {
+                    text
+                  }
+                }
+                primary {
+                  label {
+                    text
+                  }
+                  link {
+                    url
+                    link_type
+                    uid
+                  }
+                  relative_link {
+                    text
+                  }
+                }
+              }
+            }
+            logo {
+              fluid(maxWidth: 400) {
+                ...GatsbyPrismicImageFluid_withWebp_noBase64
+              }
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
+            twitter {
+              url
+            }
+          }
+        }
+      }
+      sitefr: allPrismicSiteInformation(filter: { lang: { eq: "fr-fr" } }) {
+        nodes {
+          lang
           data {
             nav {
               ... on PrismicSiteInformationNavNavItem {
@@ -217,7 +270,11 @@ export const Header = props => {
       }
     }
   `)
-  const nav = data.site.nodes[0].data.nav
+  var nav = data.site.nodes[0].data.nav
+  console.log(props.lang)
+  if (props.lang === "/fr-fr") {
+    nav = data.sitefr.nodes[0].data.nav
+  }
   const logo = data.site.nodes[0].data.logo.fluid
   // var rootPath = "https://sommetproperties.netlify.app" + props.lang
   var rootPath = window.location.origin + props.lang
