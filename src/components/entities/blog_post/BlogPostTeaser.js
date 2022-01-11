@@ -81,6 +81,14 @@ function returnImage(post) {
     }
   }
 }
+function returnLang(post) {
+  var lang = ""
+  console.log(post)
+  if (post.lang == "fr-fr") {
+    lang = "/fr-fr"
+  }
+  return lang
+}
 export const BlogPostTeaser = ({ post }) => {
   if (post.data.release_date) {
     const dates = new Date(post.data.release_date)
@@ -95,7 +103,10 @@ export const BlogPostTeaser = ({ post }) => {
     <BlogPostTeaserStyle>
       <div className="blog-teaser-image-container">{returnImage(post)}</div>
 
-      <Link className="blog-teaser-title" to={"/blog/" + post.uid}>
+      <Link
+        className="blog-teaser-title"
+        to={returnLang(post) + "/blog/" + post.uid}
+      >
         {post.data.title.text && <h2>{post.data.title.text}</h2>}
       </Link>
       {/* {post.data.release_date && (
@@ -110,7 +121,7 @@ export const BlogPostTeaser = ({ post }) => {
           dangerouslySetInnerHTML={{ __html: post.data.teaser.html }}
         />
       )}
-      <Link className="cta-button" to={"/blog/" + post.uid}>
+      <Link className="cta-button" to={returnLang(post) + "/blog/" + post.uid}>
         Read more
       </Link>
     </BlogPostTeaserStyle>

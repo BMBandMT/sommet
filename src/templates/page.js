@@ -82,6 +82,19 @@ const PostSlices = ({ slices, blog }) => {
               {<ContactSlice slice={slice} />}
             </div>
           )
+        case "contact_french":
+          const ContactFrenchSlice = loadable(() =>
+            import(`../components/slices/ContactFrenchSlice`)
+          )
+          return (
+            <div
+              id={"slice-id-" + sliceID}
+              key={index}
+              className="slice-wrapper slice-contact"
+            >
+              {<ContactFrenchSlice slice={slice} />}
+            </div>
+          )
 
         case "block_reference":
           const BlockReferenceSlice = loadable(() =>
@@ -393,6 +406,7 @@ export const postQuery = graphql`
             slice_type
             primary {
               entity_type
+              language
               number_of_entities
               slice_id {
                 text
@@ -643,6 +657,10 @@ export const postQuery = graphql`
             id
             slice_type
           }
+          ... on PrismicPaBodyContactFrench {
+            id
+            slice_type
+          }
           ... on PrismicPaBodyColumnsSection {
             id
             slice_type
@@ -767,6 +785,7 @@ export const postQuery = graphql`
     ) {
       nodes {
         uid
+        lang
         data {
           release_date(formatString: "MMM D Y")
           teaser {

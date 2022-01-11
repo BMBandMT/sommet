@@ -64,25 +64,24 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   const postTemplate = path.resolve("src/templates/post.js")
   pages.data.blog.nodes.forEach(node => {
-    if (node.lang == "en-us") {
-      createPage({
-        path: `/blog/${node.uid}`,
-        component: postTemplate,
-        context: {
-          uid: node.uid,
-          lang: node.lang,
-        },
-      })
-    } else {
-      createPage({
-        path: `/blog/${node.lang}/${node.uid}`,
-        component: postTemplate,
-        context: {
-          uid: node.uid,
-          lang: node.lang,
-        },
-      })
-    }
+    createPage({
+      path: `/blog/${node.uid}`,
+      component: postTemplate,
+      context: {
+        uid: node.uid,
+        lang: node.lang,
+      },
+    })
+  })
+  pages.data.blogfr.nodes.forEach(node => {
+    createPage({
+      path: `/fr-fr/blog/${node.uid}`,
+      component: postTemplate,
+      context: {
+        uid: node.uid,
+        lang: node.lang,
+      },
+    })
   })
   const pressPerPage = 6
   const numPressPages = Math.ceil(pages.data.press.nodes.length / pressPerPage)

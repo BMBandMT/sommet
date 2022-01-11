@@ -104,6 +104,7 @@ const PageStyle = styled.div`
   top: 200px;
   margin-bottom: 260px;
   padding-bottom: ${variable.sectionPadding};
+  color: #000000;
   .blog-post-container {
     @media (max-width: ${variable.mobileWidth}) {
       flex-direction: column;
@@ -125,7 +126,7 @@ const PageStyle = styled.div`
     font-size: 30px;
     line-height: 30px;
     margin-bottom: 40px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
   }
   h2 {
@@ -138,9 +139,9 @@ const PageStyle = styled.div`
     }
   }
   p {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 27px;
-    font-weight: 300;
+    font-weight: 400;
     margin: 25px 0px;
   }
   img {
@@ -233,12 +234,21 @@ const Post = props => {
   // if (!prismicContent) return null
   const node = props.data.page.data
   const site = props.data.site
-  const defaultBlock = props.data.defaultBlock.data
-  console.log(props)
+  var defaultBlock = props.data.defaultBlock.data
+  if (props.data.page.lang == "fr-fr") {
+    defaultBlock = props.data.defaultBlockFr.data
+  }
   // const defaultBlock = props.data.prismic.allBlocks.edges[0].node
   // const site = props.data.prismic.allSite_informations.edges[0].node
+  var lang = props.data.page.lang
+  if (lang == "en-us") {
+    lang = "/"
+  } else {
+    lang = "/fr-fr/"
+  }
   const shareUrl =
-    "https://alternativewealthpartners.com/blog/" + props.data.page.uid
+    "https://sommetproperties.com" + lang + "blog/" + props.data.page.uid
+  console.log(shareUrl)
   return (
     <Layout>
       <SEO site={site} page={props.data.page}></SEO>
@@ -291,8 +301,11 @@ const Post = props => {
 export default Post
 
 export const postQuery = graphql`
-  query PostBySlug($uid: String!) {
-    defaultBlock: prismicBlocks(uid: { eq: "global-footer" }) {
+  query PostBySlug($uid: String!, $lang: String!) {
+    defaultBlock: prismicBlocks(
+      uid: { eq: "global-footer" }
+      lang: { eq: "en-us" }
+    ) {
       data {
         body {
           ... on PrismicBlocksBodyColumnsSection {
@@ -378,7 +391,96 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "BlogHeader.jpg" }) {
+    defaultBlockFr: prismicBlocks(
+      uid: { eq: "global-footer" }
+      lang: { eq: "fr-fr" }
+    ) {
+      data {
+        body {
+          ... on PrismicBlocksBodyColumnsSection {
+            id
+            slice_type
+            primary {
+              background_color
+              slice_id {
+                text
+              }
+              background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+              column_count
+              font_color
+              h1_title
+              section_title {
+                text
+              }
+            }
+            items {
+              content {
+                raw
+              }
+            }
+          }
+          ... on PrismicBlocksBodyBasicSection {
+            id
+            slice_type
+            primary {
+              slice_id {
+                text
+              }
+              background_color
+              background_image {
+                fluid {
+                  ...GatsbyPrismicImageFluid_withWebp_noBase64
+                }
+                localFile {
+                  mobilesmall: childImageSharp {
+                    fluid(quality: 90, maxWidth: 360) {
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    }
+                  }
+                  mobile: childImageSharp {
+                    fluid(quality: 90, maxWidth: 800) {
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    }
+                  }
+                  desktop: childImageSharp {
+                    fluid(quality: 90, maxWidth: 1920) {
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    }
+                  }
+                }
+              }
+              background_video {
+                url
+              }
+              content {
+                html
+                raw
+              }
+              font_color
+              h1_title
+              section_title {
+                text
+              }
+              youtube_background {
+                embed_url
+              }
+            }
+          }
+        }
+      }
+    }
+    blogbg: file(relativePath: { eq: "BlogHeader.png" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -403,9 +505,10 @@ export const postQuery = graphql`
         }
       }
     }
-    page: prismicBlogPost(uid: { eq: $uid }) {
+    page: prismicBlogPost(uid: { eq: $uid }, lang: { eq: $lang }) {
       uid
       type
+      lang
       data {
         title {
           text

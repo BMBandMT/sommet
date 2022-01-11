@@ -36,7 +36,7 @@ const EntityQueryStyle = styled.div`
 `
 
 // Sort and display the different slice options
-const EntityResult = ({ slice, blog }) => {
+const EntityResult = ({ slice, blog, lang }) => {
   // return slices.map((slice, index) => {
   //   const res = () => {
   //     switch (slice.slice_type) {
@@ -52,6 +52,7 @@ const EntityResult = ({ slice, blog }) => {
 
   if (slice.primary.entity_type == "Blog Post") {
     return blog.nodes
+      .filter(blog => blog.lang === lang)
       .slice(0, slice.primary.number_of_entities)
       .map((post, index) => (
         <BlogPostTeaser post={post} key={index}></BlogPostTeaser>
@@ -97,6 +98,10 @@ export const EntityQuerySlice = ({ slice, blog }) => {
       theh2 = slice.primary.section_title.text
     }
   }
+  var lang = "en-us"
+  if (slice.primary.language == "French") {
+    lang = "fr-fr"
+  }
   return (
     <React.Fragment>
       {fluid && (
@@ -134,7 +139,7 @@ export const EntityQuerySlice = ({ slice, blog }) => {
                 </h2>
               )}
               <EntityQueryStyle>
-                <EntityResult slice={slice} blog={blog} />
+                <EntityResult slice={slice} blog={blog} lang={lang} />
               </EntityQueryStyle>
             </section>
           </Container>

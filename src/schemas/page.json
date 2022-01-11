@@ -338,6 +338,17 @@
                   "label": "Entity Type"
                 }
               },
+              "language": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "English",
+                    "French"
+                  ],
+                  "default_value": "English",
+                  "label": "Language"
+                }
+              },
               "number_of_entities": {
                 "type": "Number",
                 "config": {
@@ -549,6 +560,15 @@
             "fieldset": "Download",
             "description": "download",
             "icon": "cloud_download",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          },
+          "contact_french": {
+            "type": "Slice",
+            "fieldset": "Contact French",
+            "description": "Contact French",
+            "icon": "contact_mail",
             "display": "list",
             "non-repeat": {},
             "repeat": {}

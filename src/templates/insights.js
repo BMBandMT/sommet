@@ -61,7 +61,7 @@ const InsightsStyle = styled.div`
     .pager-next-container {
       min-width: 50px;
       a {
-        background-color: ${variable.blue};
+        background-color: #000000;
         color: white;
         padding: 9px 15px;
         border-radius: 10px;
@@ -69,14 +69,14 @@ const InsightsStyle = styled.div`
         margin-top: 20px;
         display: inline-block;
         &:hover {
-          background: darken($dark-blue, 10%);
+          background: #000000;
         }
       }
     }
     .pager-previous-container {
       min-width: 50px;
       a {
-        background-color: ${variable.blue};
+        background-color: #000000;
         color: white;
         padding: 9px 15px;
         border-radius: 10px;
@@ -84,7 +84,7 @@ const InsightsStyle = styled.div`
         margin-top: 20px;
         display: inline-block;
         &:hover {
-          background: darken($dark-blue, 10%);
+          background: #000000;
         }
       }
     }
@@ -101,16 +101,16 @@ const InsightsStyle = styled.div`
       display: inline-block;
       margin-left: 10px;
       background-color: white;
-      border: 2px solid ${variable.blue};
-      color: ${variable.blue};
+      border: 2px solid #000000;
+      color: #000000;
       &:first-child {
         margin-left: 0px;
       }
       &:hover {
-        background: darken($dark-blue, 10%);
+        background: #000000;
       }
       &[aria-current] {
-        background-color: ${variable.blue};
+        background-color: #000000;
         color: white;
       }
     }
@@ -119,16 +119,6 @@ const InsightsStyle = styled.div`
 
 const InsightsHeader = styled.div`
   position: relative;
-  &:after {
-    content: "";
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    bottom: -20px;
-    right: calc(50% - 20px);
-  }
   section {
     padding: 0px !important;
   }
@@ -147,15 +137,14 @@ const InsightsHeader = styled.div`
     }
     h1 {
       max-width: 450px;
-      line-height: 57px;
-      margin-bottom: 25px;
+      /* margin-bottom: 20px; */
+      margin-top: 40px;
     }
   }
   h1 {
-    font-weight: 800;
-    font-size: 60px;
-    line-height: 90px;
-    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
   }
   .hero-flex {
     min-height: 350px;
@@ -190,10 +179,11 @@ const BlogPinned = styled.div`
     }
     .pinned-right {
       width: calc(50% - 17px);
-      background-image: url("../../images/LineGraphic.png");
+      /* background-image: url("../../images/LineGraphic.png"); */
       background-size: 300px;
       background-repeat: no-repeat;
       background-position: bottom right;
+      color: #000000;
       h2 {
         font-size: 25px;
         line-height: 27px;
@@ -204,8 +194,20 @@ const BlogPinned = styled.div`
         }
       }
       a {
-        font-size: 17px;
-        color: #236382;
+        color: #000000;
+        padding: 9px 20px;
+        border-radius: 0px;
+        border: 2px solid #000000;
+        font-size: 18px;
+        font-weight: 400;
+        display: inline-block;
+        border: 1px solid black;
+        font-family: trajan-pro-3, serif;
+
+        &:hover {
+          color: white;
+          background-color: #000000;
+        }
       }
       @media (max-width: ${variable.mobileWidth}) {
         width: 100%;
@@ -383,6 +385,7 @@ export const postQuery = graphql`
     ) {
       nodes {
         uid
+        lang
         data {
           release_date(formatString: "MMM D Y")
           teaser {
@@ -419,6 +422,7 @@ export const postQuery = graphql`
     ) {
       nodes {
         uid
+        lang
         data {
           release_date(formatString: "MMM D Y")
           teaser {
@@ -447,7 +451,7 @@ export const postQuery = graphql`
         }
       }
     }
-    blogbg: file(relativePath: { eq: "Pageheader.jpg" }) {
+    blogbg: file(relativePath: { eq: "InsightsHeader.png" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
