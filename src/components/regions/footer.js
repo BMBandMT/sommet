@@ -242,7 +242,10 @@ export const Footer = props => {
   }
   const logo = data.site.nodes[0].data.logo.fluid
   // var rootPath = "https://sommetproperties.netlify.app" + props.lang
-  var rootPath = window.location.origin + props.lang
+  var rootPath = ""
+  if (typeof window !== "undefined" && window) {
+    rootPath = window.location.origin + props.lang
+  }
   return (
     <FooterStyle>
       <Container className="footer-container">
