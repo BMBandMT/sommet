@@ -572,6 +572,15 @@
             "display": "list",
             "non-repeat": {},
             "repeat": {}
+          },
+          "download_french": {
+            "type": "Slice",
+            "fieldset": "Download French",
+            "description": "Download French",
+            "icon": "cloud_download",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
           }
         }
       }

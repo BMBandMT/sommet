@@ -7,6 +7,7 @@ import "../components/scss/page/home.scss"
 import "../components/scss/page/models.scss"
 import "../components/scss/page/wall.scss"
 import "../components/scss/page/contact.scss"
+import "../components/scss/page/conf.scss"
 
 import SEO from "../components/seo"
 import { ReactTypeformEmbed } from "react-typeform-embed"
@@ -80,6 +81,32 @@ const PostSlices = ({ slices, blog }) => {
               className="slice-wrapper slice-contact"
             >
               {<ContactSlice slice={slice} />}
+            </div>
+          )
+        case "download":
+          const DownloadSlice = loadable(() =>
+            import(`../components/slices/DownloadSlice`)
+          )
+          return (
+            <div
+              id={"slice-id-" + sliceID}
+              key={index}
+              className="slice-wrapper slice-download"
+            >
+              {<DownloadSlice slice={slice} />}
+            </div>
+          )
+        case "download_french":
+          const DownloadFrenchSlice = loadable(() =>
+            import(`../components/slices/DownloadFrenchSlice`)
+          )
+          return (
+            <div
+              id={"slice-id-" + sliceID}
+              key={index}
+              className="slice-wrapper slice-download"
+            >
+              {<DownloadFrenchSlice slice={slice} />}
             </div>
           )
         case "contact_french":
@@ -658,6 +685,14 @@ export const postQuery = graphql`
             slice_type
           }
           ... on PrismicPaBodyContactFrench {
+            id
+            slice_type
+          }
+          ... on PrismicPaBodyDownload {
+            id
+            slice_type
+          }
+          ... on PrismicPaBodyDownloadFrench {
             id
             slice_type
           }

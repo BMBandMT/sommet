@@ -5,6 +5,7 @@ import Footer from "../components/regions/footer"
 import "../components/scss/layout/layout.scss"
 import Container from "./container"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 const LangStyle = styled.header`
   background-color: #000000;
@@ -15,6 +16,9 @@ const LangStyle = styled.header`
   color: white;
   div {
     margin-bottom: 10px;
+    a {
+      color: white;
+    }
   }
   .change-lang {
     cursor: pointer;
@@ -26,17 +30,22 @@ class Layout extends React.Component {
     this.state = {
       lang: "",
       langLabel: "Français",
+      confLabel: "Confidentiality Agreement",
     }
   }
   componentWillMount() {
     if (typeof window !== "undefined" && window) {
       var lang = localStorage.getItem("lang")
       var langLabel = localStorage.getItem("langLabel")
+      var confLabel = localStorage.getItem("confLabel")
       if (lang) {
         this.setState({ lang: lang }, () => {
           // console.log(this.state.lang)
         })
         this.setState({ langLabel: langLabel }, () => {
+          // console.log(this.state.langLabel)
+        })
+        this.setState({ confLabel: confLabel }, () => {
           // console.log(this.state.langLabel)
         })
         // if (lang == "/fr-fr" && window.location.pathname != "/fr-fr") {
@@ -49,17 +58,22 @@ class Layout extends React.Component {
     if (this.state.lang == "/fr-fr") {
       this.setState(state => ({ lang: "" }))
       this.setState(state => ({ langLabel: "Français" }))
+      this.setState(state => ({ confLabel: "Confidentiality Agreement" }))
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "")
         localStorage.setItem("langLabel", "Français")
+        localStorage.setItem("confLabel", "Confidentiality Agreement")
         window.location = window.location.origin
       }
     } else {
       this.setState(state => ({ lang: "/fr-fr" }))
       this.setState(state => ({ langLabel: "English" }))
+      this.setState(state => ({ confLabel: "Accord De Confidentialité" }))
+
       if (typeof window !== "undefined" && window) {
         localStorage.setItem("lang", "/fr-fr")
         localStorage.setItem("langLabel", "English")
+        localStorage.setItem("confLabel", "Accord De Confidentialité")
         window.location = window.location.origin + "/fr-fr"
       }
     }
@@ -80,7 +94,11 @@ class Layout extends React.Component {
         <Footer lang={this.state.lang} />
         <LangStyle>
           <Container>
-            <div>Confidentiality Agreement</div>
+            <div>
+              <Link to={this.state.lang + "/confidentiality-agreement"}>
+                {this.state.confLabel}
+              </Link>
+            </div>
             <div className="change-lang" onClick={() => this.toggleLang()}>
               {this.state.langLabel}
             </div>

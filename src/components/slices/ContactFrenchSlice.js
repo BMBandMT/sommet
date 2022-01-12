@@ -214,7 +214,7 @@ export const ContactFrenchSlice = ({ slice }) => {
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Nom Complet*"
+                placeholder="Nom Complet"
               />
               <div className="email-phone">
                 <input
@@ -229,7 +229,7 @@ export const ContactFrenchSlice = ({ slice }) => {
                   type="phone"
                   id="phone"
                   name="phone"
-                  placeholder="Phone"
+                  placeholder="Numéro de Téléphone"
                 />
               </div>
 
@@ -238,7 +238,7 @@ export const ContactFrenchSlice = ({ slice }) => {
                 <input
                   type="submit"
                   className="contact-submit"
-                  value="Accédez Les Brochures"
+                  value="envoyez le message"
                 />
               </div>
             </form>

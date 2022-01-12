@@ -299,7 +299,7 @@ class Post extends React.Component {
           <BackgroundImage fluid={this.props.data.blogbg.childImageSharp.fluid}>
             <Container className="hero-slice-container">
               <div className="hero-flex" style={{ minHeight: min_height }}>
-                <h1>Latest news & updates FR</h1>
+                <h1>Lisez Sur Sommet Properties</h1>
               </div>
             </Container>
           </BackgroundImage>
