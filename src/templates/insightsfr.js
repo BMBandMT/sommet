@@ -330,7 +330,7 @@ class Post extends React.Component {
                       "/fr-fr/blog/" + this.props.data.blogpinned.nodes[0].uid
                     }
                   >
-                    Read the article
+                    Lire l'article
                   </Link>
                 </div>
               </div>

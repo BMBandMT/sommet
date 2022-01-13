@@ -162,6 +162,10 @@ const ContactStyle = styled.div`
     align-items: center;
     justify-content: center !important;
     width: 100% !important;
+    cursor: pointer;
+    input {
+      cursor: pointer;
+    }
   }
   .contact-submit {
     color: white;
@@ -258,6 +262,7 @@ export const ContactSlice = ({ slice }) => {
               method="POST"
               netlify-honeypot="bot-field"
               data-netlify="true"
+              action="/thank-you-for-your-submission"
             >
               <input type="hidden" name="form-name" value="download" />
               <p className="hidden">

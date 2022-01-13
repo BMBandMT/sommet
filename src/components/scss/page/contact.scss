@@ -6,3 +6,45 @@
   background-image: url("../../../images/FormSubmitBackground.png");
   background-size: cover;
 }
+
+#thank-you-for-your-submission {
+  background-image: url("../../../images/FormSubmitBackground.png");
+  background-size: cover;
+  #slice-id-thanks-copy {
+    padding-top: 140px;
+    h1 {
+      font-size: 30px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+  }
+  #slice-id-thanks-downloads {
+    .section-content {
+      background-color: #ffffff;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 40px;
+      color: #000000;
+      padding: 25px 40px;
+      h2 {
+        font-size: 20px;
+      }
+      ul {
+        padding: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          margin-left: 20px;
+          width: calc(50% - 20px);
+          margin-bottom: 10px;
+          a {
+            color: #000000;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

@@ -196,7 +196,7 @@ const PageStyle = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      width: 135px;
+      width: 160px;
       align-items: center;
       img {
         width: 22px;
@@ -241,10 +241,13 @@ const Post = props => {
   // const defaultBlock = props.data.prismic.allBlocks.edges[0].node
   // const site = props.data.prismic.allSite_informations.edges[0].node
   var lang = props.data.page.lang
+  var shareText = "Share"
+
   if (lang == "en-us") {
     lang = "/"
   } else {
     lang = "/fr-fr/"
+    shareText = "Partagez"
   }
   const shareUrl =
     "https://sommetproperties.com" + lang + "blog/" + props.data.page.uid
@@ -272,7 +275,7 @@ const Post = props => {
                   <div className="release-date">{node.release_date}</div>
                 )}
                 <div className="blue-share">
-                  <div className="blue-share-text">Share:</div>
+                  <div className="blue-share-text">{shareText}:</div>
                   <FacebookShareButton url={shareUrl}>
                     <img src={facebookIcon} />
                   </FacebookShareButton>

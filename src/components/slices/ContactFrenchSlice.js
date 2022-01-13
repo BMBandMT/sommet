@@ -198,12 +198,12 @@ export const ContactFrenchSlice = ({ slice }) => {
               </p>
             </div>
             <form
-              name="contact"
+              name="contact_french"
               method="POST"
               netlify-honeypot="bot-field"
               data-netlify="true"
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="form-name" value="contact_french" />
               <p className="hidden">
                 <label>
                   Don’t fill this out if you’re human:{" "}

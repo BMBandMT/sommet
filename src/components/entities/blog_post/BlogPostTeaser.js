@@ -83,11 +83,17 @@ function returnImage(post) {
 }
 function returnLang(post) {
   var lang = ""
-  console.log(post)
   if (post.lang == "fr-fr") {
     lang = "/fr-fr"
   }
   return lang
+}
+function returnRead(post) {
+  var read = "READ MORE"
+  if (post.lang == "fr-fr") {
+    read = "LISEZ"
+  }
+  return read
 }
 export const BlogPostTeaser = ({ post }) => {
   if (post.data.release_date) {
@@ -122,7 +128,7 @@ export const BlogPostTeaser = ({ post }) => {
         />
       )}
       <Link className="cta-button" to={returnLang(post) + "/blog/" + post.uid}>
-        Read more
+        {returnRead(post)}
       </Link>
     </BlogPostTeaserStyle>
   )

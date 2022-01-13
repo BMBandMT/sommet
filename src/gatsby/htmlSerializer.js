@@ -3,6 +3,14 @@ import { Link } from "gatsby"
 import ResponsiveEmbed from "react-responsive-embed"
 const linkResolver = (doc, content, linkClass) => {
   // Route for blog posts
+  console.log(doc)
+  if (doc.lang == "fr-fr") {
+    return (
+      <Link to={"/fr-fr/" + doc.uid} className={linkClass}>
+        {content}
+      </Link>
+    )
+  }
   if (doc.type === "blog_post") {
     return (
       <Link to={"/blog/" + doc.uid} className={linkClass}>
