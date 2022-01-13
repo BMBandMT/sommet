@@ -57,9 +57,10 @@ const FooterStyle = styled.footer`
       a {
         color: ${variable.bluegreen};
         text-decoration: none;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
-        font-family: "Tinos";
+        font-family: trajan-pro-3, serif;
+        text-transform: uppercase;
       }
     }
   }
@@ -87,6 +88,11 @@ const activeStyle = {
   textDecoration: "underline",
 }
 function menuRender(menuitem, lang) {
+  if (lang == "en-us") {
+    lang = ""
+  } else {
+    lang = "/fr-fr"
+  }
   if (
     menuitem.items[0].sub_nav_link_label.text != "" &&
     menuitem.items[0].sub_nav_link_label.text != "Dummy"
@@ -242,9 +248,11 @@ export const Footer = props => {
   }
   const logo = data.site.nodes[0].data.logo.fluid
   // var rootPath = "https://sommetproperties.netlify.app" + props.lang
-  var rootPath = ""
+  var rootPath = window.location.origin
   if (typeof window !== "undefined" && window) {
-    rootPath = window.location.origin + props.lang
+    if (props.lang == "/fr-fr") {
+      rootPath = window.location.origin + props.lang
+    }
   }
   return (
     <FooterStyle>

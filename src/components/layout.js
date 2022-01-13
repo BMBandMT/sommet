@@ -28,7 +28,7 @@ class Layout extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      lang: "",
+      lang: "en-us",
       langLabel: "Français",
       confLabel: "Confidentiality Agreement",
     }
@@ -38,6 +38,7 @@ class Layout extends React.Component {
       var lang = localStorage.getItem("lang")
       var langLabel = localStorage.getItem("langLabel")
       var confLabel = localStorage.getItem("confLabel")
+      console.log(navigator.language)
       if (lang) {
         this.setState({ lang: lang }, () => {
           // console.log(this.state.lang)
@@ -48,19 +49,34 @@ class Layout extends React.Component {
         this.setState({ confLabel: confLabel }, () => {
           // console.log(this.state.langLabel)
         })
-        // if (lang == "/fr-fr" && window.location.pathname != "/fr-fr") {
-        //   window.location = window.location.origin + lang
-        // }
+        if (lang == "/fr-fr") {
+          if (window.location.pathname.toLowerCase().indexOf("fr-fr") === -1) {
+            window.location = window.location.origin + "/fr-fr"
+          }
+        }
+      } else {
+        var browserLang = navigator.language
+        if (browserLang == "fr") {
+          this.setState({ lang: "/fr-fr" })
+          this.setState({ langLabel: "English" })
+          this.setState({ confLabel: "Accord De Confidentialité" })
+          localStorage.setItem("lang", "/fr-fr")
+          localStorage.setItem("langLabel", "English")
+          localStorage.setItem("confLabel", "Accord De Confidentialité")
+          if (window.location.pathname.toLowerCase().indexOf("fr-fr") === -1) {
+            window.location = window.location.origin + "/fr-fr"
+          }
+        }
       }
     }
   }
   toggleLang() {
     if (this.state.lang == "/fr-fr") {
-      this.setState(state => ({ lang: "" }))
+      this.setState(state => ({ lang: "en-us" }))
       this.setState(state => ({ langLabel: "Français" }))
       this.setState(state => ({ confLabel: "Confidentiality Agreement" }))
       if (typeof window !== "undefined" && window) {
-        localStorage.setItem("lang", "")
+        localStorage.setItem("lang", "en-us")
         localStorage.setItem("langLabel", "Français")
         localStorage.setItem("confLabel", "Confidentiality Agreement")
         window.location = window.location.origin
@@ -80,7 +96,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    console.log(this)
+    console.log(navigator.language)
 
     if (this.props.slug) {
       var pageId = this.props.slug
