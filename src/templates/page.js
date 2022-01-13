@@ -9,6 +9,7 @@ import "../components/scss/page/wall.scss"
 import "../components/scss/page/contact.scss"
 import "../components/scss/page/conf.scss"
 import "../components/scss/page/community.scss"
+import "../components/scss/page/team.scss"
 
 import SEO from "../components/seo"
 import { ReactTypeformEmbed } from "react-typeform-embed"

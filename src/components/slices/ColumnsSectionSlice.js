@@ -152,12 +152,6 @@ function ColumnsSectionSlice({ slice }) {
                   items.map((item, index) => (
                     <div key={index} className="column-item">
                       <div className="column-item-inner">
-                        <ScrollAnimation
-                          animateIn="animate__fadeInDownBig"
-                          animateOnce={false}
-                        >
-                          <div className="column-shadow"></div>
-                        </ScrollAnimation>
                         <RichText
                           render={item.content.raw}
                           linkResolver={linkResolver}
