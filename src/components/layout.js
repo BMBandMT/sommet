@@ -38,17 +38,10 @@ class Layout extends React.Component {
       var lang = localStorage.getItem("lang")
       var langLabel = localStorage.getItem("langLabel")
       var confLabel = localStorage.getItem("confLabel")
-      console.log(navigator.language)
       if (lang) {
-        this.setState({ lang: lang }, () => {
-          // console.log(this.state.lang)
-        })
-        this.setState({ langLabel: langLabel }, () => {
-          // console.log(this.state.langLabel)
-        })
-        this.setState({ confLabel: confLabel }, () => {
-          // console.log(this.state.langLabel)
-        })
+        this.setState({ lang: lang }, () => {})
+        this.setState({ langLabel: langLabel }, () => {})
+        this.setState({ confLabel: confLabel }, () => {})
         if (lang == "/fr-fr") {
           if (window.location.pathname.toLowerCase().indexOf("fr-fr") === -1) {
             window.location = window.location.origin + "/fr-fr"
@@ -96,8 +89,6 @@ class Layout extends React.Component {
   }
 
   render() {
-    console.log(navigator.language)
-
     if (this.props.slug) {
       var pageId = this.props.slug
     } else {
