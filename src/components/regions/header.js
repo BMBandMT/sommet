@@ -282,8 +282,9 @@ export const Header = props => {
   }
   const logo = data.site.nodes[0].data.logo.fluid
   // var rootPath = "https://sommetproperties.netlify.app" + props.lang
-  var rootPath = window.location.origin
+  var rootPath = ""
   if (typeof window !== "undefined" && window) {
+    rootPath = window.location.origin
     if (props.lang == "/fr-fr") {
       rootPath = window.location.origin + props.lang
     }
