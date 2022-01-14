@@ -1,9 +1,17 @@
 import React from "react"
 import { Link } from "gatsby"
 import ResponsiveEmbed from "react-responsive-embed"
+
+const documentResolver = (doc, content) => {
+  return (
+    <a target="_blank" href={doc.url} download>
+      {content}
+    </a>
+  )
+}
 const linkResolver = (doc, content, linkClass) => {
   // Route for blog posts
-  console.log(doc)
+  // console.log(doc)
   if (doc.lang == "fr-fr") {
     return (
       <Link to={"/fr-fr/" + doc.uid} className={linkClass}>
@@ -41,6 +49,7 @@ const linkResolver = (doc, content, linkClass) => {
 }
 
 const htmlSerializer = (type, element, content, children) => {
+  console.log(type)
   var link = ""
   switch (type) {
     case "embed":
@@ -60,6 +69,7 @@ const htmlSerializer = (type, element, content, children) => {
       )
 
     case "hyperlink":
+      console.log(element.data)
       if (element.data.link_type == "Document") {
         if (children[0].props != null) {
           var linkClass = children[0].props.className
@@ -68,9 +78,16 @@ const htmlSerializer = (type, element, content, children) => {
             var linkClass = ""
           }
         }
+
         link = linkResolver(element.data, content, linkClass)
+        return link
       }
-      return link
+      if (element.data.link_type == "Media") {
+        if (element.data.kind == "document") {
+          var thedocument = documentResolver(element.data, content)
+          return thedocument
+        }
+      }
     case "image":
       const width = element.dimensions.width ? element.dimensions.width : ""
       const height = element.dimensions.height ? element.dimensions.height : ""
