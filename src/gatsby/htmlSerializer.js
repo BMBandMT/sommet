@@ -11,7 +11,6 @@ const documentResolver = (doc, content) => {
 }
 const linkResolver = (doc, content, linkClass) => {
   // Route for blog posts
-  // console.log(doc)
   if (doc.lang == "fr-fr") {
     return (
       <Link to={"/fr-fr/" + doc.uid} className={linkClass}>
@@ -49,7 +48,6 @@ const linkResolver = (doc, content, linkClass) => {
 }
 
 const htmlSerializer = (type, element, content, children) => {
-  console.log(type)
   var link = ""
   switch (type) {
     case "embed":
@@ -63,13 +61,12 @@ const htmlSerializer = (type, element, content, children) => {
         <div className="video-container">
           <ResponsiveEmbed
             src={"https://www.youtube.com/embed/" + video_id}
-            allowfullscreen
+            allowFullScreen
           />
         </div>
       )
 
     case "hyperlink":
-      console.log(element.data)
       if (element.data.link_type == "Document") {
         if (children[0].props != null) {
           var linkClass = children[0].props.className

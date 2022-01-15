@@ -276,7 +276,6 @@ export const Header = props => {
     }
   `)
   var nav = data.site.nodes[0].data.nav
-  console.log(props.lang)
   if (props.lang === "/fr-fr") {
     nav = data.sitefr.nodes[0].data.nav
   }
@@ -292,14 +291,15 @@ export const Header = props => {
   // if (typeof window !== "undefined" && window) {
   //   rootPath = window.location.origin + props.lang
   // }
-  // console.log(props.lang)
   return (
     <HeaderStyle className="header">
       <Container className="header-container">
         <Link className="logo" to={rootPath}>
           <Img fluid={logo} alt="logo" />
         </Link>
-        <div className="mobile-menu-container">{<MobileMenu />}</div>
+        <div className="mobile-menu-container">
+          {<MobileMenu lang={props.lang} nav={nav} />}
+        </div>
         <ul className="main-menu">
           {nav.map((menuitem, index) => (
             <li key={index}>{menuRender(menuitem, props.lang)}</li>

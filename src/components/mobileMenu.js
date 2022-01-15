@@ -8,7 +8,7 @@ import * as variable from "../components/variables"
 const MobileContainer = styled.div`
   .menu-container {
     span {
-      background-color: ${variable.blue};
+      background-color: #000000;
     }
   }
   display: none;
@@ -38,14 +38,14 @@ const MobileContainer = styled.div`
     a {
       display: block !important;
       text-align: left;
-      color: ${variable.blue};
+      color: #000000;
       text-decoration: none;
       font-size: 27px;
       &:focus {
         outline: none !important;
       }
       &.active {
-        color: ${variable.blue};
+        color: #000000;
       }
     }
     ul {
@@ -114,13 +114,14 @@ const MenuToggle = styled.div`
     position: absolute;
     height: 7px;
     width: 100%;
-    background: ${variable.blue};
+    background: #ffffff;
     border-radius: 10px;
     opacity: 1;
     left: 0;
     transform: rotate(0deg);
     transition: ${props =>
       props.open ? "all 0.25s ease-in" : "all 0.25s ease-out"};
+    box-shadow: -2px 4px 4px #000000;
   }
   span:nth-child(1) {
     top: ${props => (props.open ? "calc(50% - 3.5px)" : "10%")};
@@ -179,14 +180,14 @@ const MenuWrapper = styled.div`
     a {
       display: block !important;
       text-align: left;
-      color: ${variable.blue};
+      color: #000000;
       text-decoration: none;
       font-size: 27px;
       &:focus {
         outline: none !important;
       }
       &.active {
-        color: ${variable.blue};
+        color: #000000;
       }
     }
     ul {
@@ -198,6 +199,57 @@ const MenuWrapper = styled.div`
     }
   }
 `
+
+function menuRender(menuitem, lang) {
+  if (lang == "en-us") {
+    lang = ""
+  } else {
+    lang = "/fr-fr"
+  }
+  if (
+    menuitem.items[0].sub_nav_link_label.text != "" &&
+    menuitem.items[0].sub_nav_link_label.text != "Dummy"
+  ) {
+    return (
+      <div>
+        <Link to={lang + menuitem.primary.link.uid}>
+          {menuitem.primary.label.text}
+        </Link>
+        <div className="sub-menu">
+          {menuitem.items.map((submenuitem, index) => (
+            <div key={index}>
+              {submenuitem.sub_nav_link.url && (
+                <Link to={lang + "/" + submenuitem.sub_nav_link.uid}>
+                  {submenuitem.sub_nav_link_label.text}
+                </Link>
+              )}
+              {submenuitem.relative_link.text && (
+                <Link to={lang + submenuitem.relative_link.text}>
+                  {submenuitem.sub_nav_link_label.text}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  } else {
+    if (menuitem.primary.link.url != "") {
+      return (
+        <Link to={lang + "/" + menuitem.primary.link.uid}>
+          {menuitem.primary.label.text}
+        </Link>
+      )
+    }
+    if (menuitem.primary.relative_link) {
+      return (
+        <Link to={lang + menuitem.primary.relative_link.text}>
+          {menuitem.primary.label.text}
+        </Link>
+      )
+    }
+  }
+}
 
 const SubMenuReturn = ({ submenuitem, index }) => {
   if (
@@ -239,6 +291,7 @@ class Mobilemenu extends React.Component {
   // }
 
   render() {
+    console.log(this.props)
     return (
       <StaticQuery
         query={graphql`
@@ -265,6 +318,7 @@ class Mobilemenu extends React.Component {
                         link {
                           url
                           link_type
+                          uid
                         }
                         relative_link {
                           text
@@ -291,7 +345,6 @@ class Mobilemenu extends React.Component {
         `}
         render={data => (
           <>
-            {console.log(data)}
             <div id="mobile-menu-header">
               <div className="menu-container">
                 <MenuToggle
@@ -309,58 +362,9 @@ class Mobilemenu extends React.Component {
             <MenuWrapper open={this.state.menuOpen}>
               <div className="menu-wrap-inner" open={this.state.menuOpen}>
                 <ul>
-                  <li>
-                    <Link
-                      to="/"
-                      activeClassName="active"
-                      onClick={() => this.toggleMenu()}
-                      activeStyle={activeStyle}
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  {data.allPrismicSiteInformation.nodes[0].data.nav.map(
-                    (menuitem, index) => (
-                      <li key={menuitem.id}>
-                        {menuitem.primary.link.url && (
-                          <Link
-                            activeStyle={{ color: variable.blue }}
-                            to={menuitem.primary.link.url}
-                            onClick={() => this.toggleMenu()}
-                            activeClassName="active"
-                            activeStyle={activeStyle}
-                          >
-                            {menuitem.primary.label.text}
-                          </Link>
-                        )}
-                        {!menuitem.primary.link.url && (
-                          <Link
-                            activeStyle={{ color: variable.blue }}
-                            to={menuitem.primary.relative_link.text}
-                            onClick={() => this.toggleMenu()}
-                            activeClassName="active"
-                            activeStyle={activeStyle}
-                          >
-                            {menuitem.primary.label.text}
-                          </Link>
-                        )}
-                        {menuitem.items[0].sub_nav_link && (
-                          <ul className="sub-menu">
-                            {menuitem.items.map((submenuitem, index) => {
-                              if (submenuitem.id) {
-                                return (
-                                  <SubMenuReturn
-                                    submenuitem={submenuitem}
-                                    index={index}
-                                  />
-                                )
-                              }
-                            })}
-                          </ul>
-                        )}
-                      </li>
-                    )
-                  )}
+                  {this.props.nav.map((menuitem, index) => (
+                    <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
+                  ))}
                 </ul>
               </div>
             </MenuWrapper>

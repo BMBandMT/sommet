@@ -12,9 +12,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    @include mobile() {
-      padding-top: 60px;
-    }
   }
   h2 {
     font-size: 30px;

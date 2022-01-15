@@ -242,7 +242,6 @@ export const Footer = props => {
   `)
 
   var nav = data.site.nodes[0].data.nav
-  console.log(props.lang)
   if (props.lang === "/fr-fr") {
     nav = data.sitefr.nodes[0].data.nav
   }

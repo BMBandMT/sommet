@@ -69,8 +69,6 @@ export const EntityQuerySlice = ({ slice, blog }) => {
 
   var entityCount = null
 
-  console.log(slice)
-
   if (slice.primary.background_image != null) {
     fluid = slice.primary.background_image.fluid
   }
