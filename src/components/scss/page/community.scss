@@ -1,6 +1,9 @@
 #slice-id-community-vibrant {
   color: #000000;
   padding: 60px 0px;
+  @include mobile() {
+    padding: 60px 0px 0px 0px;
+  }
   .section-content {
     h2 {
       text-align: center;
@@ -34,18 +37,27 @@
       width: calc(50%);
       &:nth-child(2) {
         padding-left: 25px;
+        @include mobile() {
+          padding-left: 0px;
+        }
       }
       &:nth-child(3) {
         padding-right: 25px;
       }
       &:nth-child(6) {
         padding-left: 25px;
+        @include mobile() {
+          padding-left: 0px;
+        }
       }
       &:nth-child(7) {
         padding-right: 25px;
       }
       &:nth-child(10) {
         padding-left: 25px;
+        @include mobile() {
+          padding-left: 0px;
+        }
       }
       &:nth-child(11) {
         padding-right: 25px;
