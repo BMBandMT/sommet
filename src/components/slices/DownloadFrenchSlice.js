@@ -51,12 +51,21 @@ const ContactStyle = styled.div`
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
-
+        flex-wrap: wrap;
+        @media (max-width: ${variable.mobileWidth}) {
+          width: 100%;
+        }
         &.income-currency,
         &.city-country {
           input,
           select {
             width: calc(50% - 7px);
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              &:nth-child(1) {
+                margin-bottom: 20px;
+              }
+            }
           }
         }
       }

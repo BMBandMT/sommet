@@ -65,7 +65,6 @@ const ContactStyle = styled.div`
               &:nth-child(1) {
                 margin-bottom: 20px;
               }
-              /* margin-bottom: 20px; */
             }
           }
         }

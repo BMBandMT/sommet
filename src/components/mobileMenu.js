@@ -157,7 +157,7 @@ const MenuWrapper = styled.div`
   top: 0;
   z-index: 999;
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   transition: ${props =>
@@ -183,6 +183,7 @@ const MenuWrapper = styled.div`
       color: #000000;
       text-decoration: none;
       font-size: 27px;
+      text-transform: uppercase;
       &:focus {
         outline: none !important;
       }
