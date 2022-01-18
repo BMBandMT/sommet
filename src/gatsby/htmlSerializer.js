@@ -67,6 +67,7 @@ const htmlSerializer = (type, element, content, children) => {
       )
 
     case "hyperlink":
+      link = ""
       if (element.data.link_type == "Document") {
         if (children[0].props != null) {
           var linkClass = children[0].props.className
@@ -77,14 +78,13 @@ const htmlSerializer = (type, element, content, children) => {
         }
 
         link = linkResolver(element.data, content, linkClass)
-        return link
       }
       if (element.data.link_type == "Media") {
         if (element.data.kind == "document") {
-          var thedocument = documentResolver(element.data, content)
-          return thedocument
+          var link = documentResolver(element.data, content)
         }
       }
+      return link
     case "image":
       const width = element.dimensions.width ? element.dimensions.width : ""
       const height = element.dimensions.height ? element.dimensions.height : ""
