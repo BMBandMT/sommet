@@ -94,6 +94,10 @@ class Layout extends React.Component {
     } else {
       var pageId = ""
     }
+    var lang = ""
+    if (this.state.lang == "/fr-fr") {
+      lang = this.state.lang
+    }
     return (
       <div id={pageId}>
         <Header lang={this.state.lang} />
@@ -102,7 +106,7 @@ class Layout extends React.Component {
         <LangStyle>
           <Container>
             <div>
-              <Link to={this.state.lang + "/confidentiality-agreement"}>
+              <Link to={lang + "/confidentiality-agreement"}>
                 {this.state.confLabel}
               </Link>
             </div>

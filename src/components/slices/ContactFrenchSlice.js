@@ -11,8 +11,9 @@ const ContactStyle = styled.div`
   max-width: 720px;
   h2 {
     font-size: 30px;
-    line-height: 1.2;
+    /* line-height: 0.5; */
     text-align: center;
+    margin: 0px;
   }
   p {
     text-align: center;
@@ -191,10 +192,11 @@ export const ContactFrenchSlice = ({ slice }) => {
         <div className="contact-outer">
           <div className="contact-form-left">
             <div class="contact-top-copy">
-              <h2>Téléchargez Les Brochures Des Modèles</h2>
+              <h2>Contactez-Nous & Rejoignez notre communauté</h2>
               <p>
-                Pour accéder aux brochures complètes et aux plans d’étage de nos
-                maisons de luxe, veuillez soumettre les informations suivantes.
+                Pour en savoir davantage sur l’achat d’une maison à Teranga
+                Estates, ainsi que sur les prix des maisons et les options de
+                modèles, veuillez contacter notre équipe.
               </p>
             </div>
             <form
@@ -214,14 +216,15 @@ export const ContactFrenchSlice = ({ slice }) => {
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Nom Complet"
+                placeholder="Nom Complet*"
+                required
               />
               <div className="email-phone">
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email*"
                   required
                 />
 
@@ -229,7 +232,8 @@ export const ContactFrenchSlice = ({ slice }) => {
                   type="phone"
                   id="phone"
                   name="phone"
-                  placeholder="Numéro de Téléphone"
+                  placeholder="Numéro de Téléphone*"
+                  required
                 />
               </div>
 
@@ -238,7 +242,8 @@ export const ContactFrenchSlice = ({ slice }) => {
                 <input
                   type="submit"
                   className="contact-submit"
-                  value="envoyez le message"
+                  value="envoyez le message*"
+                  required
                 />
               </div>
             </form>

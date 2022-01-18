@@ -11,8 +11,9 @@ const ContactStyle = styled.div`
   max-width: 720px;
   h2 {
     font-size: 30px;
-    line-height: 0.5;
+    /* line-height: 0.5; */
     text-align: center;
+    margin: 0px;
   }
   p {
     text-align: center;
@@ -216,14 +217,15 @@ export const ContactSlice = ({ slice }) => {
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Full Name"
+                placeholder="Full Name*"
+                required
               />
               <div className="email-phone">
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email*"
                   required
                 />
 
@@ -231,7 +233,8 @@ export const ContactSlice = ({ slice }) => {
                   type="phone"
                   id="phone"
                   name="phone"
-                  placeholder="Phone"
+                  placeholder="Phone*"
+                  required
                 />
               </div>
 
@@ -240,7 +243,8 @@ export const ContactSlice = ({ slice }) => {
                 <input
                   type="submit"
                   className="contact-submit"
-                  value="Send Message"
+                  value="Send Message*"
+                  required
                 />
               </div>
             </form>

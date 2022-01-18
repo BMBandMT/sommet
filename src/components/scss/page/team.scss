@@ -31,15 +31,28 @@
       line-height: 25px;
     }
     .column {
+      @include mobile() {
+        flex-direction: column-reverse;
+      }
       .column-item {
         &:nth-child(1) {
           width: 60%;
         }
         &:nth-child(2) {
           width: 30%;
+          @include mobile() {
+            text-align: center;
+          }
           img {
             width: 100%;
             height: auto;
+            @include mobile() {
+              height: 150px;
+              width: auto;
+            }
+          }
+          .block-img {
+            margin: 0px;
           }
         }
       }
