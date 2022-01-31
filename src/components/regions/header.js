@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Container from "../container"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import * as variable from "../variables"
 import MobileMenu from "../mobileMenu"
@@ -12,6 +12,14 @@ const HeaderStyle = styled.header`
   width: 100%;
   background-size: cover;
   padding: 20px 0px;
+  .flag {
+    width: 20px;
+    height: auto;
+    position: absolute !important;
+    top: -30px;
+    right: 0px;
+    cursor: pointer;
+  }
   .header-social-container {
     padding: 8px 0px;
     @media (max-width: ${variable.tabletWidth}) {
@@ -53,11 +61,14 @@ const HeaderStyle = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0px;
+    position: relative;
     li {
       list-style: none;
       margin-right: 30px;
       position: relative;
-
+      &:nth-child(7) {
+        margin-right: 0px;
+      }
       a {
         text-decoration: none;
         color: ${variable.bluegreen};
@@ -165,149 +176,198 @@ function menuRender(menuitem, lang) {
   }
 }
 
-export const Header = props => {
-  const data = useStaticQuery(graphql`
-    query menu {
-      site: allPrismicSiteInformation(filter: { lang: { eq: "en-us" } }) {
-        nodes {
-          data {
-            nav {
-              ... on PrismicSiteInformationNavNavItem {
-                id
-                items {
-                  sub_nav_link {
+class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.toggleLang = props.toggleLang.bind(this)
+  }
+  render() {
+    return (
+      <StaticQuery
+        query={graphql`
+          query menu {
+            site: allPrismicSiteInformation(filter: { lang: { eq: "en-us" } }) {
+              nodes {
+                data {
+                  nav {
+                    ... on PrismicSiteInformationNavNavItem {
+                      id
+                      items {
+                        sub_nav_link {
+                          url
+                          link_type
+                          uid
+                        }
+                        sub_nav_link_label {
+                          text
+                        }
+                        relative_link {
+                          text
+                        }
+                      }
+                      primary {
+                        label {
+                          text
+                        }
+                        link {
+                          url
+                          link_type
+                          uid
+                        }
+                        relative_link {
+                          text
+                        }
+                      }
+                    }
+                  }
+                  logo {
+                    fluid(maxWidth: 400) {
+                      ...GatsbyPrismicImageFluid_withWebp_noBase64
+                    }
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400) {
+                          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                      }
+                    }
+                  }
+                  twitter {
                     url
-                    link_type
-                    uid
-                  }
-                  sub_nav_link_label {
-                    text
-                  }
-                  relative_link {
-                    text
-                  }
-                }
-                primary {
-                  label {
-                    text
-                  }
-                  link {
-                    url
-                    link_type
-                    uid
-                  }
-                  relative_link {
-                    text
                   }
                 }
               }
             }
-            logo {
-              fluid(maxWidth: 400) {
-                ...GatsbyPrismicImageFluid_withWebp_noBase64
-              }
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 400) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            sitefr: allPrismicSiteInformation(
+              filter: { lang: { eq: "fr-fr" } }
+            ) {
+              nodes {
+                lang
+                data {
+                  nav {
+                    ... on PrismicSiteInformationNavNavItem {
+                      id
+                      items {
+                        sub_nav_link {
+                          url
+                          link_type
+                          uid
+                        }
+                        sub_nav_link_label {
+                          text
+                        }
+                        relative_link {
+                          text
+                        }
+                      }
+                      primary {
+                        label {
+                          text
+                        }
+                        link {
+                          url
+                          link_type
+                          uid
+                        }
+                        relative_link {
+                          text
+                        }
+                      }
+                    }
+                  }
+                  logo {
+                    fluid(maxWidth: 400) {
+                      ...GatsbyPrismicImageFluid_withWebp_noBase64
+                    }
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400) {
+                          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                      }
+                    }
+                  }
+                  twitter {
+                    url
                   }
                 }
               }
             }
-            twitter {
-              url
+            fraflag: file(name: { eq: "fraflag" }) {
+              name
+              childImageSharp {
+                fluid(maxWidth: 100) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+            engflag: file(name: { eq: "engflag" }) {
+              name
+              childImageSharp {
+                fluid(maxWidth: 100) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
             }
           }
-        }
-      }
-      sitefr: allPrismicSiteInformation(filter: { lang: { eq: "fr-fr" } }) {
-        nodes {
-          lang
-          data {
-            nav {
-              ... on PrismicSiteInformationNavNavItem {
-                id
-                items {
-                  sub_nav_link {
-                    url
-                    link_type
-                    uid
-                  }
-                  sub_nav_link_label {
-                    text
-                  }
-                  relative_link {
-                    text
-                  }
-                }
-                primary {
-                  label {
-                    text
-                  }
-                  link {
-                    url
-                    link_type
-                    uid
-                  }
-                  relative_link {
-                    text
-                  }
-                }
-              }
-            }
-            logo {
-              fluid(maxWidth: 400) {
-                ...GatsbyPrismicImageFluid_withWebp_noBase64
-              }
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 400) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-            twitter {
-              url
+        `}
+        render={data => {
+          var nav = data.site.nodes[0].data.nav
+          if (this.props.lang === "/fr-fr") {
+            nav = data.sitefr.nodes[0].data.nav
+          }
+          const logo = data.site.nodes[0].data.logo.fluid
+          // var rootPath = "https://sommetproperties.netlify.app" + props.lang
+          var rootPath = ""
+          if (typeof window !== "undefined" && window) {
+            rootPath = window.location.origin
+            if (this.props.lang == "/fr-fr") {
+              rootPath = window.location.origin + this.props.lang
             }
           }
-        }
-      }
-    }
-  `)
-  var nav = data.site.nodes[0].data.nav
-  if (props.lang === "/fr-fr") {
-    nav = data.sitefr.nodes[0].data.nav
+          return (
+            <HeaderStyle className="header">
+              <Container className="header-container">
+                <Link className="logo" to={rootPath}>
+                  <Img fluid={logo} alt="logo" />
+                </Link>
+                <div className="mobile-menu-container">
+                  {
+                    <MobileMenu
+                      lang={this.props.lang}
+                      nav={nav}
+                      toggleLang={this.props.toggleLang}
+                      state={this.props.state}
+                    />
+                  }
+                </div>
+
+                <ul className="main-menu">
+                  <div onClick={this.props.toggleLang}>
+                    {this.props.lang === "/fr-fr" ? (
+                      <Img
+                        className="flag"
+                        fluid={data.fraflag.childImageSharp.fluid}
+                      />
+                    ) : (
+                      <Img
+                        className="flag"
+                        fluid={data.engflag.childImageSharp.fluid}
+                      />
+                    )}
+                  </div>
+                  {nav.map((menuitem, index) => (
+                    <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
+                  ))}
+                </ul>
+              </Container>
+            </HeaderStyle>
+          )
+        }}
+      />
+    )
   }
-  const logo = data.site.nodes[0].data.logo.fluid
-  // var rootPath = "https://sommetproperties.netlify.app" + props.lang
-  var rootPath = ""
-  if (typeof window !== "undefined" && window) {
-    rootPath = window.location.origin
-    if (props.lang == "/fr-fr") {
-      rootPath = window.location.origin + props.lang
-    }
-  }
-  // if (typeof window !== "undefined" && window) {
-  //   rootPath = window.location.origin + props.lang
-  // }
-  return (
-    <HeaderStyle className="header">
-      <Container className="header-container">
-        <Link className="logo" to={rootPath}>
-          <Img fluid={logo} alt="logo" />
-        </Link>
-        <div className="mobile-menu-container">
-          {<MobileMenu lang={props.lang} nav={nav} />}
-        </div>
-        <ul className="main-menu">
-          {nav.map((menuitem, index) => (
-            <li key={index}>{menuRender(menuitem, props.lang)}</li>
-          ))}
-        </ul>
-      </Container>
-    </HeaderStyle>
-  )
 }
 
 export default Header

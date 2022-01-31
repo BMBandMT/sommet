@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import * as variable from "../components/variables"
+import Img from "gatsby-image"
 
 const MobileContainer = styled.div`
   .menu-container {
@@ -151,6 +152,15 @@ const RotateContainer = styled.div`
 `
 
 const MenuWrapper = styled.div`
+  position: relative;
+  .flag {
+    width: 20px;
+    height: auto;
+    position: absolute !important;
+    top: -50px !important;
+    right: 0px;
+    cursor: pointer;
+  }
   position: fixed;
   overflow: hidden;
   right: ${props => (props.open ? "0" : "-100%")};
@@ -166,6 +176,7 @@ const MenuWrapper = styled.div`
   padding: 40px 30px;
   ul {
     padding-left: 0px;
+    position: relative;
   }
   li {
     font-size: 30px;
@@ -197,6 +208,7 @@ const MenuWrapper = styled.div`
       width: 100% !important;
       margin: 0px;
       padding: 0px;
+      position: relative;
     }
   }
 `
@@ -297,7 +309,7 @@ class Mobilemenu extends React.Component {
       <StaticQuery
         query={graphql`
           query {
-            allPrismicSiteInformation {
+            site: allPrismicSiteInformation {
               nodes {
                 data {
                   nav {
@@ -342,6 +354,22 @@ class Mobilemenu extends React.Component {
                 }
               }
             }
+            fraflag: file(name: { eq: "fraflag" }) {
+              name
+              childImageSharp {
+                fluid(maxWidth: 100) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+            engflag: file(name: { eq: "engflag" }) {
+              name
+              childImageSharp {
+                fluid(maxWidth: 100) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
           }
         `}
         render={data => (
@@ -363,6 +391,19 @@ class Mobilemenu extends React.Component {
             <MenuWrapper open={this.state.menuOpen}>
               <div className="menu-wrap-inner" open={this.state.menuOpen}>
                 <ul>
+                  <div onClick={this.props.toggleLang}>
+                    {this.props.lang === "/fr-fr" ? (
+                      <Img
+                        className="flag"
+                        fluid={data.fraflag.childImageSharp.fluid}
+                      />
+                    ) : (
+                      <Img
+                        className="flag"
+                        fluid={data.engflag.childImageSharp.fluid}
+                      />
+                    )}
+                  </div>
                   {this.props.nav.map((menuitem, index) => (
                     <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
                   ))}

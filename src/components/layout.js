@@ -27,6 +27,7 @@ const LangStyle = styled.header`
 class Layout extends React.Component {
   constructor(props) {
     super(props)
+    this.toggleLang = this.toggleLang.bind(this)
     this.state = {
       lang: "en-us",
       langLabel: "Français",
@@ -64,6 +65,7 @@ class Layout extends React.Component {
     }
   }
   toggleLang() {
+    console.log(this)
     if (this.state.lang == "/fr-fr") {
       this.setState(state => ({ lang: "en-us" }))
       this.setState(state => ({ langLabel: "Français" }))
@@ -100,7 +102,11 @@ class Layout extends React.Component {
     }
     return (
       <div id={pageId}>
-        <Header lang={this.state.lang} />
+        <Header
+          lang={this.state.lang}
+          toggleLang={this.toggleLang}
+          state={this.state}
+        />
         <main>{this.props.children}</main>
         <Footer lang={this.state.lang} />
         <LangStyle>
