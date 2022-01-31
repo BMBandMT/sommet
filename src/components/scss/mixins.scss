@@ -77,3 +77,8 @@
     @content;
   }
 }
+@mixin mobilesmaller {
+  @media only screen and (max-width: 450px) {
+    @content;
+  }
+}

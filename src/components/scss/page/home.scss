@@ -4,6 +4,16 @@
   }
 }
 #slice-id-home-hero {
+  section {
+    @include mobilesmaller() {
+      &::after {
+        background-position: -560px;
+      }
+      &::before {
+        background-position: -560px;
+      }
+    }
+  }
   .section-content {
     padding-top: 220px;
     padding-bottom: 220px;
@@ -12,15 +22,24 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    @include mobile() {
+      padding: 160px 0px 80px 0px;
+    }
   }
   h2 {
     font-size: 30px;
     text-transform: uppercase;
     line-height: 38px;
+    @include mobile() {
+      font-size: 22px;
+    }
   }
   p {
     font-size: 20px;
     max-width: 600px;
+    @include mobile() {
+      font-size: 16px;
+    }
   }
   a {
     @include cta-button();
