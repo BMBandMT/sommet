@@ -7,10 +7,10 @@
   section {
     @include mobilesmaller() {
       &::after {
-        background-position: -560px;
+        background-position: -440px;
       }
       &::before {
-        background-position: -560px;
+        background-position: -440px;
       }
     }
   }

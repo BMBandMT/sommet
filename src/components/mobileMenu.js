@@ -395,12 +395,12 @@ class Mobilemenu extends React.Component {
                     {this.props.lang === "/fr-fr" ? (
                       <Img
                         className="flag"
-                        fluid={data.fraflag.childImageSharp.fluid}
+                        fluid={data.engflag.childImageSharp.fluid}
                       />
                     ) : (
                       <Img
                         className="flag"
-                        fluid={data.engflag.childImageSharp.fluid}
+                        fluid={data.fraflag.childImageSharp.fluid}
                       />
                     )}
                   </div>
