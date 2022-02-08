@@ -5,10 +5,10 @@ const linkResolver = require("./src/utils/linkResolver")
 
 module.exports = {
   siteMetadata: {
-    title: `MassiveT herapeutics`,
+    title: `Sommet Properties`,
     description: `Description. Change me.`,
     author: `Alexander Fountain`,
-    siteUrl: `https://www.massivetherapeutics.com`,
+    siteUrl: `https://www.sommetproperties.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://www.massivetherapeutics.com",
-        sitemap: "https://www.massivetherapeutics.com/sitemap.xml",
+        host: "https://www.sommetproperties.com",
+        sitemap: "https://www.sommetproperties.com/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
@@ -121,8 +121,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Massive Therapeutics`,
-        short_name: `Massive Therapeutics`,
+        name: `Sommet Properties`,
+        short_name: `Sommet Properties`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
