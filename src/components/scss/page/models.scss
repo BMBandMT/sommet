@@ -151,6 +151,7 @@
 }
 
 #slice-id-models-ndanane {
+
   em {
     vertical-align: super;
     font-size: 14px;
@@ -223,6 +224,13 @@
         @include mobile() {
           width: 100%;
         }
+      }
+    }
+  }
+  &:nth-child(10){
+    ul{
+      height:280px;
+      li{
       }
     }
   }
