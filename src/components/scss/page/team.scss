@@ -88,9 +88,13 @@
   color: #000000;
   text-align: center;
   padding-top: 60px;
+  overflow: hidden;
   p {
     max-width: 740px;
     margin: 0 auto;
+  }
+  .section-content{
+    overflow: hidden;
   }
 }
 
