@@ -56,7 +56,6 @@
       h3 {
         font-size: 18px;
         font-weight: bold;
-        border-bottom: 2px solid black;
         width: 100%;
         padding-bottom: 30px;
         max-width: 800px;
@@ -67,12 +66,16 @@
       }
       ul {
         display: flex;
-        max-width: 600px;
+        width: 800px;
         margin: 0 auto;
         flex-wrap: wrap;
-        justify-content: space-between;
-        padding-top: 10px;
-        padding-left: 65px;
+        height: 175px;
+        flex-direction: column;
+        align-items: flex-end;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        padding: 30px 0px 10px 0px;
+        margin-bottom: 10px;
         @include mobile() {
           padding-left: 20px;
           max-width: 100%;
@@ -201,7 +204,7 @@
         width: 800px;
         margin: 0 auto;
         flex-wrap: wrap;
-        height: 175px;
+        height: 200px;
         flex-direction: column;
         align-items: flex-end;
         border-bottom: 2px solid black;
