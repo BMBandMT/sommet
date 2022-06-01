@@ -194,8 +194,8 @@ export const ContactFrenchSlice = ({ slice }) => {
             <div class="contact-top-copy">
               <h2>Contactez-Nous & Rejoignez notre communauté</h2>
               <p>
-                Pour en savoir davantage sur l’achat d’une maison à Teranga
-                Estates, ainsi que sur les prix des maisons et les options de
+                Pour en savoir davantage sur l’achat d’une villa à Teranga
+                Estates, ainsi que sur les prix des villas et les options de
                 modèles, veuillez contacter notre équipe.
               </p>
             </div>

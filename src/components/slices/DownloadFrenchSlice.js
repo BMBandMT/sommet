@@ -263,7 +263,7 @@ export const ContactSlice = ({ slice }) => {
               <h2>Téléchargez Les Brochures Des Modèles</h2>
               <p>
                 Pour accéder aux brochures complètes et aux plans d’étage de nos
-                maisons de luxe, veuillez soumettre les informations suivantes.
+                villas de luxe, veuillez soumettre les informations suivantes.
               </p>
             </div>
             <form
