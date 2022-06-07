@@ -144,6 +144,9 @@ export const Footer = props => {
         nodes {
           lang
           data {
+            copyright {
+              raw
+            }
             nav {
               ... on PrismicSiteInformationNavNavItem {
                 id
@@ -193,6 +196,7 @@ export const Footer = props => {
         nodes {
           lang
           data {
+
             nav {
               ... on PrismicSiteInformationNavNavItem {
                 id

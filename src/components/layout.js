@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Header from "../components/regions/header"
 import Footer from "../components/regions/footer"
+import Copyright from "../components/regions/copyright"
 import "../components/scss/layout/layout.scss"
 import Container from "./container"
 import styled from "styled-components"
@@ -121,6 +122,7 @@ class Layout extends React.Component {
             </div>
           </Container>
         </LangStyle>
+        <Copyright></Copyright>
       </div>
     )
   }

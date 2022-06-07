@@ -37,31 +37,36 @@
     "facebook": {
       "type": "Link",
       "config": {
-        "label": "Facebook"
+        "label": "Facebook",
+        "select": null
       }
     },
     "twitter": {
       "type": "Link",
       "config": {
-        "label": "Twitter"
+        "label": "Twitter",
+        "select": null
       }
     },
     "instagram": {
       "type": "Link",
       "config": {
-        "label": "Instagram"
+        "label": "Instagram",
+        "select": null
       }
     },
     "pinterest": {
       "type": "Link",
       "config": {
-        "label": "Pinterest"
+        "label": "Pinterest",
+        "select": null
       }
     },
     "email": {
       "type": "Link",
       "config": {
-        "label": "Email"
+        "label": "Email",
+        "select": null
       }
     },
     "twitter_author": {
@@ -103,7 +108,8 @@
                 "type": "Link",
                 "config": {
                   "label": "Link",
-                  "placeholder": "Select Link..."
+                  "placeholder": "Select Link...",
+                  "select": null
                 }
               },
               "relative_link": {
@@ -127,7 +133,8 @@
                 "type": "Link",
                 "config": {
                   "label": "Sub Nav Link",
-                  "placeholder": "Select Sub Nav Link..."
+                  "placeholder": "Select Sub Nav Link...",
+                  "select": null
                 }
               },
               "relative_link": {
@@ -156,6 +163,15 @@
       "config": {
         "single": "paragraph",
         "label": "Meta Description"
+      }
+    }
+  },
+  "Copyright": {
+    "copyright": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "copyright"
       }
     }
   }
