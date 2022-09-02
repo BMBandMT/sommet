@@ -7,7 +7,7 @@ import Img from "gatsby-image"
 import * as variable from "../variables"
 import MobileMenu from "../mobileMenu"
 
-const HeaderStyle = styled.header `
+const HeaderStyle = styled.header`
   z-index: 2;
   width: 100%;
   background-size: cover;
@@ -122,68 +122,70 @@ const HeaderStyle = styled.header `
   }
 `
 const activeStyle = {
-    color: variable.blue,
+  color: variable.blue,
 }
 
 function menuRender(menuitem, lang) {
-    if (lang == "en-us") {
-        lang = ""
-    } else {
-        lang = "/fr-fr"
+  if (lang == "en-us") {
+    lang = ""
+  } else {
+    lang = "/fr-fr"
+  }
+  if (
+    menuitem.items[0].sub_nav_link_label.text != "" &&
+    menuitem.items[0].sub_nav_link_label.text != "Dummy"
+  ) {
+    return (
+      <div>
+        <Link to={lang + menuitem.primary.link.uid}>
+          {menuitem.primary.label.text}
+        </Link>
+        <div className="sub-menu">
+          {menuitem.items.map((submenuitem, index) => (
+            <div key={index}>
+              {submenuitem.sub_nav_link.url && (
+                <Link to={lang + "/" + submenuitem.sub_nav_link.uid}>
+                  {submenuitem.sub_nav_link_label.text}
+                </Link>
+              )}
+              {submenuitem.relative_link.text && (
+                <Link to={lang + submenuitem.relative_link.text}>
+                  {submenuitem.sub_nav_link_label.text}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  } else {
+    if (menuitem.primary.link.url != "") {
+      return (
+        <Link to={lang + "/" + menuitem.primary.link.uid}>
+          {menuitem.primary.label.text}
+        </Link>
+      )
     }
-    if (
-        menuitem.items[0].sub_nav_link_label.text != "" &&
-        menuitem.items[0].sub_nav_link_label.text != "Dummy"
-    ) {
-        return ( <
-            div >
-            <
-            Link to = { lang + menuitem.primary.link.uid } > { menuitem.primary.label.text } <
-            /Link> <
-            div className = "sub-menu" > {
-                menuitem.items.map((submenuitem, index) => ( <
-                    div key = { index } > {
-                        submenuitem.sub_nav_link.url && ( <
-                            Link to = { lang + "/" + submenuitem.sub_nav_link.uid } > { submenuitem.sub_nav_link_label.text } <
-                            /Link>
-                        )
-                    } {
-                        submenuitem.relative_link.text && ( <
-                            Link to = { lang + submenuitem.relative_link.text } > { submenuitem.sub_nav_link_label.text } <
-                            /Link>
-                        )
-                    } <
-                    /div>
-                ))
-            } <
-            /div> <
-            /div>
-        )
-    } else {
-        if (menuitem.primary.link.url != "") {
-            return ( <
-                Link to = { lang + "/" + menuitem.primary.link.uid } > { menuitem.primary.label.text } <
-                /Link>
-            )
-        }
-        if (menuitem.primary.relative_link) {
-            return ( <
-                Link to = { lang + menuitem.primary.relative_link.text } > { menuitem.primary.label.text } <
-                /Link>
-            )
-        }
+    if (menuitem.primary.relative_link) {
+      return (
+        <Link to={lang + menuitem.primary.relative_link.text}>
+          {menuitem.primary.label.text}
+        </Link>
+      )
     }
+  }
 }
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props)
-        console.log(props)
-        this.toggleLang = props.toggleLang.bind(this)
-    }
-    render() {
-        return ( <
-            StaticQuery query = { graphql `
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.toggleLang = props.toggleLang.bind(this)
+  }
+  render() {
+    return (
+      <StaticQuery
+        query={graphql`
           query menu {
             site: allPrismicSiteInformation(filter: { lang: { eq: "en-us" } }) {
               nodes {
@@ -309,72 +311,63 @@ class Header extends React.Component {
               }
             }
           }
-        ` }
-            render = {
-                data => {
-                    var nav = data.site.nodes[0].data.nav
-                    if (this.props.lang === "/fr-fr") {
-                        nav = data.sitefr.nodes[0].data.nav
-                    }
-                    const logo = data.site.nodes[0].data.logo.fluid
-                        // var rootPath = "https://sommetproperties.netlify.app" + props.lang
-                    var rootPath = ""
-                    if (typeof window !== "undefined" && window) {
-                        rootPath = window.location.origin
-                        if (this.props.lang == "/fr-fr") {
-                            rootPath = window.location.origin + this.props.lang
-                        }
-                    }
-                    return ( <
-                        HeaderStyle className = "header" >
-                        <
-                        Container className = "header-container" >
-                        <
-                        Link className = "logo"
-                        to = { rootPath } >
-                        <
-                        Img fluid = { logo }
-                        alt = "logo" / >
-                        <
-                        /Link> <
-                        div className = "mobile-menu-container" > { <
-                            MobileMenu
-                            lang = { this.props.lang }
-                            nav = { nav }
-                            toggleLang = { this.props.toggleLang }
-                            state = { this.props.state }
-                            />
-                        } <
-                        /div>
-
-                        <
-                        ul className = "main-menu" >
-                        <
-                        div onClick = { this.props.toggleLang } > {
-                            this.props.lang === "/fr-fr" ? ( <
-                                Img className = "flag"
-                                fluid = { data.engflag.childImageSharp.fluid }
-                                />
-                            ) : ( <
-                                Img className = "flag"
-                                fluid = { data.fraflag.childImageSharp.fluid }
-                                />
-                            )
-                        } <
-                        /div> {
-                            nav.map((menuitem, index) => ( <
-                                li key = { index } > { menuRender(menuitem, this.props.lang) } < /li>
-                            ))
-                        } <
-                        /ul> <
-                        /Container> <
-                        /HeaderStyle>
-                    )
-                }
+        `}
+        render={data => {
+          var nav = data.site.nodes[0].data.nav
+          if (this.props.lang === "/fr-fr") {
+            nav = data.sitefr.nodes[0].data.nav
+          }
+          const logo = data.site.nodes[0].data.logo.fluid
+          // var rootPath = "https://sommetproperties.netlify.app" + props.lang
+          var rootPath = ""
+          if (typeof window !== "undefined" && window) {
+            rootPath = window.location.origin
+            if (this.props.lang == "/fr-fr") {
+              rootPath = window.location.origin + this.props.lang
             }
-            />
-        )
-    }
+          }
+          return (
+            <HeaderStyle className="header">
+              <Container className="header-container">
+                <Link className="logo" to={rootPath}>
+                  <Img fluid={logo} alt="logo" />
+                </Link>
+                <div className="mobile-menu-container">
+                  {
+                    <MobileMenu
+                      lang={this.props.lang}
+                      nav={nav}
+                      toggleLang={this.props.toggleLang}
+                      state={this.props.state}
+                    />
+                  }
+                </div>
+
+                <ul className="main-menu">
+                  <div onClick={this.props.toggleLang}>
+                    {this.props.lang === "/fr-fr" ? (
+                      <Img
+                        className="flag"
+                        fluid={data.engflag.childImageSharp.fluid}
+                      />
+                    ) : (
+                      <Img
+                        className="flag"
+                        fluid={data.fraflag.childImageSharp.fluid}
+                      />
+                    )}
+                  </div>
+                  {nav.map((menuitem, index) => (
+                    <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
+                  ))}
+                </ul>
+              </Container>
+            </HeaderStyle>
+          )
+        }}
+      />
+    )
+  }
 }
 
 export default Header
