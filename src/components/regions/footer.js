@@ -258,22 +258,23 @@ export const Footer = props => {
       rootPath = window.location.origin + props.lang
     }
   }
-  return (
-    <FooterStyle>
-      <Container className="footer-container">
-        <div className="footer-upper-container">
-          <Link className="logo" to={rootPath}>
-            <img src="../../images/logo.png" alt="logo" />
-          </Link>
-          <ul className="footer-main-menu">
-            {nav.map((menuitem, index) => (
-              <li key={index}>{menuRender(menuitem, props.lang)}</li>
-            ))}
-          </ul>
-        </div>
-      </Container>
-    </FooterStyle>
-  )
+  // return (
+  //   <FooterStyle>
+  //     <Container className="footer-container">
+  //       <div className="footer-upper-container">
+  //         <Link className="logo" to={rootPath}>
+  //           <img src="../../images/logo.png" alt="logo" />
+  //         </Link>
+  //         <ul className="footer-main-menu">
+  //           {nav.map((menuitem, index) => (
+  //             <li key={index}>{menuRender(menuitem, props.lang)}</li>
+  //           ))}
+  //         </ul>
+  //       </div>
+  //     </Container>
+  //   </FooterStyle>
+  // )
+  return null
 }
 
 export default Footer
