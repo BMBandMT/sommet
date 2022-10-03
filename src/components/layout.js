@@ -110,7 +110,7 @@ class Layout extends React.Component {
         />
         <main>{this.props.children}</main>
         <Footer lang={this.state.lang} />
-        <LangStyle>
+        {/* <LangStyle>
           <Container>
             <div>
               <Link to={lang + "/confidentiality-agreement"}>
@@ -121,7 +121,7 @@ class Layout extends React.Component {
               {this.state.langLabel}
             </div>
           </Container>
-        </LangStyle>
+        </LangStyle> */}
         <Copyright></Copyright>
       </div>
     )
