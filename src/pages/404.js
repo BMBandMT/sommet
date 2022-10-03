@@ -34,9 +34,9 @@ export const NotFoundPage = () => {
     <Layout>
       <Container>
         <Style404>
-          <h1>NOT FOUND</h1>
-          <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-          <Img fluid={data.notfound.childImageSharp.fluid} />
+          {/* <h1>NOT FOUND</h1>
+          <p>You just hit a route that doesn&#39;t exist... the sadness.</p> */}
+          {/* <Img fluid={data.notfound.childImageSharp.fluid} /> */}
         </Style404>
       </Container>
     </Layout>
