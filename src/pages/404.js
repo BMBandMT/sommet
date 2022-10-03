@@ -38,7 +38,7 @@ export const NotFoundPage = () => {
           <p>You just hit a route that doesn&#39;t exist... the sadness.</p> */}
           {/* <Img fluid={data.notfound.childImageSharp.fluid} /> */}
           <h1>UNDER CONSTRUCTION</h1>
-          <p>This site is still under construction. We apologize for the inconvinience!</p>
+          <p>This site is still under construction. We apologize for the inconvenience!</p>
         </Style404>
       </Container>
     </Layout>
