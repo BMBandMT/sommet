@@ -358,7 +358,7 @@ class Header extends React.Component {
                     )}
                   </div>
                   {nav.map((menuitem, index) => (
-                    <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
+                    // <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
                   ))}
                 </ul>
               </Container>
