@@ -32,19 +32,20 @@ export const Copyright = props => {
       }
     }
   `)
-  return (
-    <CopyStyle>
-      <Container className="copy-container">
-        <div className="copy-inner">
-        <RichText
-        render={data.site.nodes[0].data.copyright.raw}
-        linkResolver={linkResolver}
-        htmlSerializer={prismicHtmlSerializer}
-      />
-        </div>
-      </Container>
-    </CopyStyle>
-  )
+  // return (
+  //   <CopyStyle>
+  //     <Container className="copy-container">
+  //       <div className="copy-inner">
+  //       <RichText
+  //       render={data.site.nodes[0].data.copyright.raw}
+  //       linkResolver={linkResolver}
+  //       htmlSerializer={prismicHtmlSerializer}
+  //     />
+  //       </div>
+  //     </Container>
+  //   </CopyStyle>
+  // )
+  return null
 }
 
 export default Copyright
