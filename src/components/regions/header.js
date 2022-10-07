@@ -326,45 +326,44 @@ class Header extends React.Component {
               rootPath = window.location.origin + this.props.lang
             }
           }
-          // return (
-          //   <HeaderStyle className="header">
-          //     <Container className="header-container">
-          //       <Link className="logo" to={rootPath}>
-          //         <Img fluid={logo} alt="logo" />
-          //       </Link>
-          //       <div className="mobile-menu-container">
-          //         {
-          //           <MobileMenu
-          //             lang={this.props.lang}
-          //             nav={nav}
-          //             toggleLang={this.props.toggleLang}
-          //             state={this.props.state}
-          //           />
-          //         }
-          //       </div>
+          return (
+            <HeaderStyle className="header">
+              <Container className="header-container">
+                <Link className="logo" to={rootPath}>
+                  <Img fluid={logo} alt="logo" />
+                </Link>
+                <div className="mobile-menu-container">
+                  {
+                    <MobileMenu
+                      lang={this.props.lang}
+                      nav={nav}
+                      toggleLang={this.props.toggleLang}
+                      state={this.props.state}
+                    />
+                  }
+                </div>
 
-          //       <ul className="main-menu">
-          //         <div onClick={this.props.toggleLang}>
-          //           {this.props.lang === "/fr-fr" ? (
-          //             <Img
-          //               className="flag"
-          //               fluid={data.engflag.childImageSharp.fluid}
-          //             />
-          //           ) : (
-          //             <Img
-          //               className="flag"
-          //               fluid={data.fraflag.childImageSharp.fluid}
-          //             />
-          //           )}
-          //         </div>
-          //         {nav.map((menuitem, index) => (
-          //           <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
-          //         ))}
-          //       </ul>
-          //     </Container>
-          //   </HeaderStyle>
-          // )
-          return null
+                <ul className="main-menu">
+                  <div onClick={this.props.toggleLang}>
+                    {this.props.lang === "/fr-fr" ? (
+                      <Img
+                        className="flag"
+                        fluid={data.engflag.childImageSharp.fluid}
+                      />
+                    ) : (
+                      <Img
+                        className="flag"
+                        fluid={data.fraflag.childImageSharp.fluid}
+                      />
+                    )}
+                  </div>
+                  {nav.map((menuitem, index) => (
+                    <li key={index}>{menuRender(menuitem, this.props.lang)}</li>
+                  ))}
+                </ul>
+              </Container>
+            </HeaderStyle>
+          )
         }}
       />
     )
